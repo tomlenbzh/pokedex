@@ -1,0 +1,21 @@
+<div class="pokemon-card animate__animated animate__fadeIn" [class]="pokemon?.card.class" matRipple>
+
+  <div class="left-section">
+    <h5 class="card-id">{{ processId(pokemon?.info.id) }}</h5>
+    <h2 class="card-title">
+      {{ processName(pokemon?.info.name) }}
+      <i *ngIf="hasGender" [class]="gender"></i>
+    </h2>
+
+    <div class="pokemon-card-types">
+      <div class="type" *ngFor="let type of pokemon?.info.types">
+        <img [src]="getTypeIcon(type.type.name)" class="type-img">
+      </div>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <img [src]="pokemon?.img" onerror="this.src='../../../assets/images/img-placeholder.gif'" class="pokemon-card-img">
+  </div>
+
+</div>

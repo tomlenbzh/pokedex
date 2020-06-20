@@ -1,0 +1,31 @@
+.main-panel {
+  height: 100px;
+  overflow-y: scroll;
+}
+.search-results {
+  height: 100%;
+}
+
+.example-viewport {
+  height: 80vh;
+  width: 100%;
+
+  li {
+    height: 50px;
+    margin: 10px;
+  }
+}
+
+.search-input {
+  margin-bottom: 20px;
+}
+
+.loader-container {
+  position: fixed;
+  top: 35vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  text-align: center;
+}

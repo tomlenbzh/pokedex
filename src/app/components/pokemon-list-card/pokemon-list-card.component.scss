@@ -1,0 +1,145 @@
+// @import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+// font-family: "Electrolize", sans-serif !important;
+// font-family: "Michroma", sans-serif !important;
+
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+
+.pokemon-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 3px #7c7c7c;
+  cursor: pointer;
+
+  .card-title {
+    // transform: skewY(-5deg);
+    margin: 0;
+    font-family: "Aldrich", sans-serif !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .card-id {
+    margin: 0;
+    font-family: "Aldrich", sans-serif !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .pokemon-card-img {
+    width: 70px;
+    height: 70px;
+    z-index: 2;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .pokemon-card-img-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .pokemon-card-types {
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+  }
+}
+
+.pokemon-card:hover {
+  .card-title {
+    font-size: x-large;
+  }
+  .pokemon-card-img {
+    transform: scale(1.2);
+  }
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  align-items: flex-start;
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  position: relative;
+  align-items: flex-end;
+}
+
+.type-img {
+  width: 80px;
+  padding-right: 5px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1199px) {
+  .pokemon-card {
+    .card-title {
+      font-size: medium;
+    }
+  }
+
+  .pokemon-card:hover {
+    .card-title {
+      font-size: large;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .pokemon-card {
+    .card-title {
+      font-size: medium;
+    }
+  }
+
+  .pokemon-card:hover {
+    .card-title {
+      font-size: large;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .pokemon-card {
+    .card-title {
+      font-size: medium;
+    }
+  }
+
+  .pokemon-card:hover {
+    .card-title {
+      font-size: large;
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .pokemon-card {
+    .card-title {
+      font-size: medium;
+    }
+  }
+
+  .pokemon-card:hover {
+    .card-title {
+      font-size: large;
+    }
+  }
+}

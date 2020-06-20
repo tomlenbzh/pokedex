@@ -1,0 +1,127 @@
+<app-page-header [title]="pageTitle"></app-page-header>
+
+<div class="container mt-10">
+
+  <div class="loader-container" *ngIf="isLoading">
+    <app-pokemon-loader [message]="loadingMessage"></app-pokemon-loader>
+  </div>
+
+  <section class="pokemon-details-header animate__animated animate__fadeIn" [class]="pokemonDetails?.colour.class"
+    *ngIf="showHeader">
+
+    <div class="pokemon-stats ">
+
+      <div class="stats">
+        <h1 class="pokemon-name">{{ pokemonDetails?.name }}</h1>
+
+        <div class="items">
+          <div class="details-item" style="display: flex; flex-direction: row;">
+            <div class="header-label">Height :</div>
+            <div class="header-value">{{ processHeight(pokemonDetails?.height) }} m</div>
+          </div>
+
+          <div class="details-item" style="display: flex; flex-direction: row;">
+            <div class="header-label">Weight :</div>
+            <div class="header-value">{{ processWeight(pokemonDetails?.weight) }} Kg</div>
+          </div>
+
+          <div class="details-item" style="display: flex; flex-direction: row;">
+            <div class="header-label">Base Exp :</div>
+            <div class="header-value">{{ pokemonDetails?.baseExperience }} pts</div>
+          </div>
+
+          <div class="details-item" style="display: flex; flex-direction: row; align-items: flex-end;">
+            <div class="header-label">Type(s) :</div>
+            <div class="types" style="display: flex; flex-direction: row; height: 100%; align-items: flex-end;">
+              <div class="type" *ngFor="let typeObject of pokemonDetails?.types">
+                <img [src]="getTypeIcon(typeObject.type.name)" class="img-type">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="header-img animate__animated animate__fadeInRight animate__delay-1s">
+      <img [src]="pokemonDetails?.img" class="pokemon-img">
+    </div>
+    <div *ngIf="hasGif(pokemonDetails?.colour.type)">
+      <img [src]="getGif(pokemonDetails?.colour.type)" [class]="selectedGif.class">
+    </div>
+
+  </section>
+
+  <section class="mt-50 mb-50 abilities animate__animated animate__fadeIn" *ngIf="showAbilities">
+    <h1>Abilities ({{ pokemonDetails?.abilities.length }})</h1>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="clicked($event)" *ngFor="let ability of pokemonDetails?.abilities">
+
+        <mat-expansion-panel-header class="panel-header">
+          <mat-panel-title>{{ ability.name }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="effects" *ngFor="let entry of ability.detail.effect_entries">
+          <div *ngIf="entry.language.name === 'en'">{{ entry.effect }}</div>
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+
+  <section class="mt-50 mb-50 abilities animate__animated animate__fadeIn" *ngIf="showMoves">
+    <h1>Moves ({{ pokemonDetails?.moves.length }})</h1>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="clicked($event)" *ngFor="let move of pokemonDetails?.moves">
+
+        <mat-expansion-panel-header class="panel-header">
+          <mat-panel-title>{{ move.name }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="effects" *ngFor="let entry of move.detail.effect_entries">
+
+          <div class="type mb-20">
+            <img [src]="getTypeIcon(move.detail.type.name)" style="height: 20px;">
+          </div>
+
+          <div *ngIf="entry.language.name === 'en'" class="move-effect">
+
+            <div class="row" style="margin-bottom: 20px;">
+
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="details-item" style="display: flex; flex-direction: row;">
+                  <div class="header-label skill-label">Accuracy:</div>
+                  <div class="header-value">{{ move.detail.accuracy }}</div>
+                </div>
+
+                <div class="details-item" style="display: flex; flex-direction: row;">
+                  <div class="header-label skill-label">Power:</div>
+                  <div class="header-value">{{ move.detail.power }}</div>
+                </div>
+
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="details-item" style="display: flex; flex-direction: row;">
+                  <div class="header-label skill-label">PP:</div>
+                  <div class="header-value">{{ move.detail.pp }}</div>
+                </div>
+                <div class="details-item" style="display: flex; flex-direction: row;">
+                  <div class="header-label skill-label">Priority:</div>
+                  <div class="header-value">{{ move.detail.priority }}</div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="move-effect-name">{{ entry.effect }}</div>
+
+          </div>
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+
+</div>

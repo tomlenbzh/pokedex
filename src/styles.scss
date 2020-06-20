@@ -1,1 +1,357 @@
 /* You can add global styles to this file, and also import other style files */
+
+// @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;300;400&display=swap");
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // font-family: "Staatliches", cursive !important;
+}
+
+button:focus,
+input:focus {
+  outline: none !important;
+}
+
+/* ++++++++++++++++++++ GENERAL CSS CLASSES ++++++++++++++++++++ */
+
+// MARGIN ALL
+
+.mg-10 {
+  margin: 5px;
+}
+
+.mg-10 {
+  margin: 10px;
+}
+
+.mg-20 {
+  margin: 20px;
+}
+
+.mg-30 {
+  margin: 30px;
+}
+
+.mg-50 {
+  margin: 50px;
+}
+
+// MARGIN TOP
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+// MARGIN RIGHT
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.mr-30 {
+  margin-right: 30px;
+}
+
+.mr-50 {
+  margin-right: 50px;
+}
+
+// MARGIN BOTTOM
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+// MARGIN LEFT
+
+.ml-5 {
+  margin-left: 5px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.ml-30 {
+  margin-left: 30px;
+}
+
+.ml-50 {
+  margin-left: 50px;
+}
+
+// PADDING ALL
+
+.pg-5 {
+  padding: 5px;
+}
+
+.pg-10 {
+  padding: 10px;
+}
+
+.pg-20 {
+  padding: 20px;
+}
+
+.pg-30 {
+  padding: 30px;
+}
+
+.pg-50 {
+  padding: 50px;
+}
+
+// PADDING TOP
+
+.pt-5 {
+  padding-top: 5px;
+}
+
+.pt-10 {
+  padding-top: 10px;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.pt-30 {
+  padding-top: 30px;
+}
+
+.pt-50 {
+  padding-top: 50px;
+}
+
+// PADDING RIGHT
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.pr-20 {
+  padding-right: 20px;
+}
+
+.pr-30 {
+  padding-right: 30px;
+}
+
+.pr-50 {
+  padding-right: 50px;
+}
+
+// PADDING BOTTOM
+
+.pb-5 {
+  padding-bottom: 5px;
+}
+
+.pb-10 {
+  padding-bottom: 10px;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.pb-30 {
+  padding-bottom: 30px;
+}
+
+.pb-50 {
+  padding-bottom: 50px;
+}
+
+// PADDING LEFT
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pl-20 {
+  padding-left: 20px;
+}
+
+.pl-30 {
+  padding-left: 30px;
+}
+
+.pl-50 {
+  padding-left: 50px;
+}
+
+// TEXT ALIGN
+
+.txt-c {
+  text-align: center;
+}
+
+.txt-l {
+  text-align: left;
+}
+
+.txt-r {
+  text-align: right;
+}
+
+.txt-j {
+  text-align: justify;
+}
+
+// Pokémon Types
+
+.type-grass {
+  background: linear-gradient(140deg, #64bc5b 30%, #022803 86%);
+  color: #163f0f;
+}
+
+.type-fire {
+  background: linear-gradient(140deg, #ff9d56 30%, #660c05 86%);
+  color: #481206;
+}
+
+.type-flying {
+  background: linear-gradient(140deg, #8fa9de 30%, #1f0c58 86%);
+}
+
+.type-water {
+  background: linear-gradient(140deg, #5190d6 30%, #002645 86%);
+  color: #07103d;
+}
+
+.type-normal {
+  background: linear-gradient(140deg, #919aa2 30%, #192024 86%);
+  color: #192024;
+}
+
+.type-fighting {
+  background: linear-gradient(140deg, #ce426c 30%, #590f0b 86%);
+  color: #3f0d0a;
+}
+
+.type-poison {
+  background: linear-gradient(140deg, #aa6cc8 30%, #32043a 86%);
+  color: #2b0e31;
+}
+
+.type-electric {
+  background: linear-gradient(140deg, #f4d23d 30%, #74690b 86%);
+  color: #2b280c;
+}
+
+.type-ground {
+  background: linear-gradient(140deg, #d97946 30%, #4f1706 86%);
+  color: #33160d;
+}
+
+.type-psychic {
+  background: linear-gradient(140deg, #fa727a 30%, #482186 86%);
+  color: #5c181c;
+}
+
+.type-rock {
+  background: linear-gradient(140deg, #c5b78c 30%, #725c02 86%);
+  color: #312a0f;
+}
+
+.type-ice {
+  background: linear-gradient(140deg, #74cec0 30%, #085555 86%);
+  color: #0d3131;
+}
+
+.type-bug {
+  background: linear-gradient(140deg, #91c130 30%, #1a3000 86%);
+  color: #1e2f09;
+}
+
+.type-dragon {
+  background: linear-gradient(140deg, #0c6ec3 30%, #25076f 86%);
+  color: #0c2235;
+}
+
+.type-ghost {
+  background: linear-gradient(140deg, #536aad 30%, #1c0b38 86%);
+  color: #1f152f;
+}
+
+.type-dark {
+  background: linear-gradient(140deg, #5b5466 30%, #03050f 86%);
+  color: #03050f;
+}
+
+.type-steel {
+  background: linear-gradient(140deg, #5b8ea2 30%, #2b2b42 86%);
+  color: #131331;
+}
+
+.type-fairy {
+  background: linear-gradient(140deg, #ec8fe6 30%, #a5083d 86%);
+  color: #5c0a25;
+}
+
+.type-unknown {
+  background: linear-gradient(140deg, #68a090 30%, #0f6149 86%);
+}
