@@ -4,11 +4,10 @@
 
   <div class="row">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <input placeholder="Search for a Pokémon" class="form-control search-input" [(ngModel)]="searchPokemon">
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="filterPokemon">
-        <mat-radio-button value="1" class="mr-20">By name</mat-radio-button>
-        <mat-radio-button value="2">By type</mat-radio-button>
-      </mat-radio-group>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Search for a Pokémon</mat-label>
+        <input matInput [(ngModel)]="searchPokemon">
+      </mat-form-field>
     </div>
   </div>
 

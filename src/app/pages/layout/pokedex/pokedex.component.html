@@ -1,43 +1,42 @@
 <section class="home-full-height-container">
 
-  <!-- <img src="../../../../assets/images/Pokemon Title.png" class="pokemon-title animate__animated animate__zoomIn"> -->
-
   <div class="side-panel" [ngClass]="isOpen ? 'open' : 'closed'">
 
-    <div class="sidenav-content" style="position: relative; height: 100vh;">
+    <div class="side-panel-content">
 
       <div class="navigation-buttons" *ngIf="showButtons">
 
         <div class="pokemon-title txt-c mt-20 mb-10 animate__animated animate__zoomIn">
-          <img src="../../../../assets/images/Pokemon Title.png" alt="" width="150px">
+          <img src="../../../../assets/images/Pokemon Title.png" class="pokemon-logo">
         </div>
 
         <button mat-raised-button color="accent" class="nav-button animate__animated animate__fadeIn animate__delay-1s"
           [routerLink]="['/pokemon-list']" routerLinkActive="router-link-active">
-          All Pokémons
+          Pokémons
         </button>
 
-        <button mat-raised-button color="accent" class="nav-button animate__animated animate__fadeIn animate__delay-2s">
+        <button mat-raised-button color="accent" class="nav-button animate__animated animate__fadeIn animate__delay-1s">
+          Evolutions
+        </button>
+
+        <button mat-raised-button color="accent" class="nav-button animate__animated animate__fadeIn animate__delay-1s">
           Types
         </button>
 
-        <button mat-raised-button color="accent" class="nav-button animate__animated animate__fadeIn animate__delay-3s">
-          Search for a Pokémon
+        <button mat-raised-button color="accent" class="nav-button animate__animated animate__fadeIn animate__delay-1s">
+          Regions
+        </button>
+
+        <button mat-raised-button color="accent" class="nav-button animate__animated animate__fadeIn animate__delay-1s">
+          Games
         </button>
 
       </div>
 
       <div class="pokeball-container animate__animated animate__fadeIn" *ngIf="showDev">
-
-        <img src="../../../../assets/images/Wallpapers/MyPokeball.png" alt="" class="open-pokeball-img nav-button ">
-
-        <h3 style="color: white;">Thomas Lenoel</h3>
-        <h5 style="color: white;">Web & Mobile Developer</h5>
-
-        <button mat-raised-button color="primary"
-          class="nav-button animate__animated animate__fadeIn animate__delay-1s">
-          My Portfolio
-        </button>
+        <img src="../../../../assets/images/Wallpapers/MyPokeball.png" class="open-pokeball-img">
+        <h5 class="dev-name">Thomas Lenoel</h5>
+        <h6 class="dev-title">Web & Mobile Developer</h6>
       </div>
 
     </div>

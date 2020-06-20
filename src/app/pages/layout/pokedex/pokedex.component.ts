@@ -25,7 +25,7 @@ export class PokedexComponent implements OnInit {
         this.showButtons = true;
         setTimeout(() => {
           this.showDev = true;
-        }, 2500);
+        }, 2000);
       }, 400);
     }, 100);
   }

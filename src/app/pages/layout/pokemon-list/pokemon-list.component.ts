@@ -12,7 +12,7 @@ import { typeList } from '../../../data/types.data';
 })
 export class PokemonListComponent implements OnInit, OnDestroy {
 
-  pageTitle = 'All Pokémons';
+  pageTitle = 'Pokémons';
   loadingMessage = 'Loading...';
   isLoading: boolean;
   pokemonsList: any[] = [];

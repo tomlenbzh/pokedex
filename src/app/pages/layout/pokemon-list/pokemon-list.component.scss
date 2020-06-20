@@ -29,3 +29,11 @@
   padding: 25px;
   text-align: center;
 }
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #10182b !important;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #10182b !important;
+}

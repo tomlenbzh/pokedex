@@ -60,7 +60,7 @@
 }
 
 .skill-label {
-  color: #5ca7cb;
+  color: #404c52;
 }
 
 .pokemon-name {
@@ -218,9 +218,9 @@
 }
 
 .abilities {
-  background: #0a1a2a;
+  // background: #0a1a2a;
   border-radius: 10px;
-  color: #e28853;
+  // color: #e28853;
   padding: 20px;
 }
 
@@ -231,25 +231,25 @@
 }
 
 .effects {
-  background: #0a1a2a;
-  color: #b7b7b7;
+  // background: #0a1a2a;
+  // color: #b7b7b7;
 }
 
 mat-expansion-panel {
-  background: #0a1a2a;
-  box-shadow: none !important;
+  // background: #0a1a2a;
+  // box-shadow: none !important;
 }
 
 mat-panel-title {
-  color: #e28853;
+  // color: #e28853;
 }
 
 mat-expansion-indicator {
-  color: #e28853 !important;
+  // color: #e28853 !important;
 }
 
 ::ng-deep .mat-expansion-indicator:after {
-  color: #e28853 !important;
+  // color: #e28853 !important;
 }
 
 .type {
@@ -316,7 +316,15 @@ mat-expansion-indicator {
   }
 }
 
-@media only screen and (max-width: 340px) {
+@media only screen and (max-width: 360px) {
+  .pokemon-details-header {
+    padding: 10px 20px;
+  }
+
+  .pokemon-name {
+    margin: 0;
+  }
+
   .pokemon-img {
     width: 100px;
     position: absolute;

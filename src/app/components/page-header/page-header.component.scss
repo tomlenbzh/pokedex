@@ -72,10 +72,7 @@ img:focus {
   .page-header {
     height: 15vh;
   }
-}
-
-@media only screen and (max-width: 359px) {
   .header-title {
-    font-size: x-large;
+    font-size: large;
   }
 }

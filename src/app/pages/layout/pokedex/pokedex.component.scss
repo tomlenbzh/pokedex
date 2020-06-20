@@ -1,51 +1,119 @@
 .home-full-height-container {
+  height: 100vh;
   background-image: url("../../../../assets/images/Wallpapers/MyPokedex.png");
   background-repeat: no-repeat;
   background-position: top right;
   background-size: cover;
-  height: 100vh;
 }
 
 .side-panel {
   position: absolute;
+  height: 100%;
   top: 0;
   left: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+
+  // transition: all ease-in-out 0.5s;
+}
+
+.side-panel-content {
+  position: relative;
+  height: 100%;
+  // transition: all ease-in-out 0.5s;
+}
+
+.pokemon-logo {
+  width: 150px;
   transition: all ease-in-out 0.5s;
 }
 
 .closed {
   width: 0px;
+  transition: all ease-in-out 0.5s;
 }
 
 .open {
   width: 300px;
+  transition: all ease-in-out 0.5s;
+}
+
+.dev-name {
+  color: white;
+  margin: 0px;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.dev-title {
+  color: white;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: 100;
+  text-transform: uppercase;
 }
 
 .navigation-buttons {
   width: 100%;
+  height: 80vh;
   position: relative;
   overflow: hidden;
+  transition: all ease-in-out 0.5s;
 }
 
 .nav-button {
   margin: 20px;
-  width: 100%;
-  width: calc(100% - 40px);
+  width: 260px;
   font-family: "Aldrich", sans-serif !important;
   font-weight: bold;
-  text-transform: uppercase;
+  color: #2d4b62;
+  transition: all ease-in-out 0.5s;
 }
 
 .pokeball-container {
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .open-pokeball-img {
   width: 50px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1199px) {
+}
+
+@media only screen and (max-width: 991px) {
+}
+
+@media only screen and (max-width: 767px) {
+}
+
+@media only screen and (max-width: 575px) {
+}
+
+@media only screen and (max-width: 520px) {
+  .open {
+    width: 100%;
+  }
+
+  .nav-button {
+    margin: 20px 20%;
+    width: calc(100% - 40%);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}
+
+@media only screen and (max-width: 320px) {
+  .nav-button {
+    margin: 10px 10%;
+    width: calc(100% - 20%);
+  }
 }
