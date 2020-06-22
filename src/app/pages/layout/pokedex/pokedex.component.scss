@@ -1,5 +1,5 @@
 .home-full-height-container {
-  height: 100vh;
+  height: 100%; //
 }
 
 .logo-small {
@@ -25,7 +25,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
+  // bottom: 0;
+  height: 100%; //
   left: 0;
   background-image: url("../../../../assets/images/Wallpapers/MyPokedex.png");
   background-repeat: no-repeat;
@@ -42,7 +43,8 @@
   flex-direction: column;
   overflow: hidden;
   width: 300px;
-  height: 100vh;
+  // height: 100vh;
+  height: -webkit-fill-available; //
   margin: 0 calc(50% - 150px);
   z-index: 1;
   transition: all ease-in-out 0.5s;
