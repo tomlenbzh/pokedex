@@ -1,5 +1,5 @@
-<section class="home-full-height-container" [ngStyle]="{'height': windowHeight}">
-  <div class="home-full-height-bg"></div>
+<section class="home-full-height-container" [ngStyle]="{'height': getwindowHeight()}">
+  <div class="home-full-height-bg" [ngStyle]="{'height': getwindowHeight()}"></div>
 
   <img src="../../../../assets/images/Pokemon Title.png" class="logo-small animate__animated animate__zoomIn">
   <div class="dev-container-small animate__animated animate__fadeInUp animate__delay-1s">
@@ -8,7 +8,7 @@
     <h6 class="dev-title">Web & Mobile Developer</h6>
   </div>
 
-  <div class="menu">
+  <div class="menu" [ngStyle]="{'height': getwindowHeight()}">
 
     <div class="logo-container">
       <img src="../../../../assets/images/Pokemon Title.png" class="pokemon-logo animate__animated animate__zoomIn">

@@ -11,17 +11,21 @@ export class PokedexComponent implements OnInit, AfterViewInit, AfterViewChecked
   isOpen: boolean;
   showButtons: boolean;
   showDev: boolean;
-  windowHeight: any;
+  windowHeight = ``;
 
   constructor() {
     this.isOpen = false;
     this.showButtons = false;
     this.showDev = false;
-    this.windowHeight = window.innerHeight;
+  }
 
+  getwindowHeight(): string {
+    const orientation = '(orientation: portrait)';
+    return (window.matchMedia(orientation).matches) ? (`${window.innerHeight}px`) : (`${window.innerHeight}px`);
   }
 
   ngOnInit(): void {
+    console.log('this.windowHeight', this.windowHeight);
     setTimeout(() => {
       this.isOpen = true;
       setTimeout(() => {
