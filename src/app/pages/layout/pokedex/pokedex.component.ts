@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-pokedex',
@@ -6,16 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokedex.component.scss']
 })
 
-export class PokedexComponent implements OnInit {
+export class PokedexComponent implements OnInit, AfterViewInit, AfterViewChecked, OnChanges {
 
   isOpen: boolean;
   showButtons: boolean;
   showDev: boolean;
+  windowHeight: any;
 
   constructor() {
     this.isOpen = false;
     this.showButtons = false;
     this.showDev = false;
+    this.windowHeight = window.innerHeight;
+
   }
 
   ngOnInit(): void {
@@ -28,5 +31,13 @@ export class PokedexComponent implements OnInit {
         }, 2000);
       }, 400);
     }, 100);
+  }
+
+  ngAfterViewChecked(): void {
+  }
+
+  ngAfterViewInit() { }
+
+  ngOnChanges() {
   }
 }

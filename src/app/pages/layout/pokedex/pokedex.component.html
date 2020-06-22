@@ -1,8 +1,8 @@
-<section class="home-full-height-container">
+<section class="home-full-height-container" [ngStyle]="{'height': windowHeight}">
   <div class="home-full-height-bg"></div>
 
-  <img src="../../../../assets/images/Pokemon Title.png" class="logo-small animate__animated animate__fadeIn">
-  <div class="dev-container-small animate__animated animate__fadeInUp">
+  <img src="../../../../assets/images/Pokemon Title.png" class="logo-small animate__animated animate__zoomIn">
+  <div class="dev-container-small animate__animated animate__fadeInUp animate__delay-1s">
     <img src="../../../../assets/images/Wallpapers/MyPokeball.png" class="dev-pokeball">
     <h5 class="dev-name">Thomas Lenoel</h5>
     <h6 class="dev-title">Web & Mobile Developer</h6>
@@ -11,9 +11,9 @@
   <div class="menu">
 
     <div class="logo-container">
-      <img src="../../../../assets/images/Pokemon Title.png" class="pokemon-logo">
+      <img src="../../../../assets/images/Pokemon Title.png" class="pokemon-logo animate__animated animate__zoomIn">
     </div>
-    <div class="buttons-container">
+    <div class="buttons-container animate__animated animate__fadeIn animate__delay-1s">
       <button mat-raised-button color="accent" class="menu-button" [routerLink]="['/pokemon-list']"
         routerLinkActive="router-link-active">
         Pokémons
@@ -39,7 +39,7 @@
         Games
       </button>
     </div>
-    <div class="dev-container">
+    <div class="dev-container animate__animated animate__fadeIn">
       <img src="../../../../assets/images/Wallpapers/MyPokeball.png" class="dev-pokeball">
       <h5 class="dev-name">Thomas Lenoel</h5>
       <h6 class="dev-title">Web & Mobile Developer</h6>
