@@ -22,7 +22,7 @@
 }
 
 .home-full-height-bg {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   // bottom: 0;
@@ -32,7 +32,7 @@
   background-repeat: no-repeat;
   background-position: top right;
   background-size: cover;
-  overflow: hidden;
+  overflow: auto;
   filter: brightness(0.7);
   z-index: 0;
 }
@@ -41,10 +41,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   width: 300px;
-  // height: 100vh;
-  height: -webkit-fill-available; //
+  height: 100vh;
   margin: 0 calc(50% - 150px);
   z-index: 1;
   transition: all ease-in-out 0.5s;
@@ -52,6 +50,7 @@
 
 .logo-container {
   margin: 5vh 0;
+  height: 25vh;
 }
 
 .pokemon-logo {
@@ -61,7 +60,7 @@
 .buttons-container {
   display: grid;
   grid-row-gap: 30px;
-  margin-top: 50px;
+  margin: 50px 0;
   transition: all ease-in-out 0.5s;
 }
 
