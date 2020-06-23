@@ -1,9 +1,13 @@
 .home-full-height-container {
-  position: relative;
-  height: -webkit-fill-available;
-  height: -moz-available;
-  height: stretch;
+  // position: relative;
+  // height: -webkit-fill-available;
+  // height: -moz-available;
+  // height: stretch;
+
+  // height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100%;
+  transition: all ease-in-out 0.5s;
 }
 
 // .logo-small {
@@ -39,7 +43,7 @@
   -webkit-filter: brightness(0.7);
   filter: brightness(0.7);
   z-index: 0;
-  // transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.5s;
 }
 
 // .menu {
