@@ -25,21 +25,18 @@ export class PokedexComponent implements OnInit, AfterViewInit, AfterViewChecked
     // this.showDev = false;
 
     window.addEventListener('resize', () => {
-
-      // Get screen size (inner/outerWidth, inner/outerHeight)
-      // console.log(`WIDTH: ${window.screen.availWidth}`);
-      // console.log(`HEIGHT: ${window.screen.availHeight}`);
-
-      document.documentElement.style.setProperty('--vh', `${this.height}px`);
-
-    }, false);
+      this.calcVH();
+    }, true);
 
     window.addEventListener('orientationchange', () => {
+      this.calcVH();
+    }, true);
+  }
 
-      // alert(screen.orientation);
-      document.documentElement.style.setProperty('--vh', `${this.height}px`);
-
-    }, false);
+  calcVH() {
+    const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    document.getElementById('home-full-height-container').setAttribute('style', `height:${vH}px`);
+    document.getElementById('home-full-height-bg').setAttribute('style', `height:${vH}px`);
   }
 
   getwindowHeight(): string {
