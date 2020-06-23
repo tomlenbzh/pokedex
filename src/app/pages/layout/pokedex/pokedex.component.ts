@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, OnChanges, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-pokedex',
@@ -6,42 +6,56 @@ import { Component, OnInit, AfterViewInit, AfterViewChecked, OnChanges } from '@
   styleUrls: ['./pokedex.component.scss']
 })
 
-export class PokedexComponent implements OnInit, AfterViewInit, AfterViewChecked, OnChanges {
+export class PokedexComponent implements OnInit, AfterViewInit, AfterViewChecked, OnChanges, OnDestroy {
 
-  isOpen: boolean;
-  showButtons: boolean;
-  showDev: boolean;
-  windowHeight = ``;
+  // isOpen: boolean;
+  // showButtons: boolean;
+  // showDev: boolean;
+  // windowHeight = ``;
+  // dimensions: {
+  //   width: string,
+  //   height: string,
+  // };
 
   constructor() {
-    this.isOpen = false;
-    this.showButtons = false;
-    this.showDev = false;
+    // this.isOpen = false;
+    // this.showButtons = false;
+    // this.showDev = false;
   }
 
   getwindowHeight(): string {
-    const orientation = '(orientation: portrait)';
-    return (window.matchMedia(orientation).matches) ? (`${window.innerHeight}px`) : (`${window.innerHeight}px`);
+    // const orientation = '(orientation: portrait)';
+    // console.log('window.matchMedia(orientation).matches:', window.matchMedia(orientation).matches);
+    // return (window.matchMedia(orientation).matches) ? (`${window.innerHeight}px`) : (`${window.innerHeight}px`);
+    return '';
   }
 
   ngOnInit(): void {
-    console.log('this.windowHeight', this.windowHeight);
-    setTimeout(() => {
-      this.isOpen = true;
-      setTimeout(() => {
-        this.showButtons = true;
-        setTimeout(() => {
-          this.showDev = true;
-        }, 2000);
-      }, 400);
-    }, 100);
+    // console.log('this.windowHeight', this.windowHeight);
+    // setTimeout(() => {
+    //   this.isOpen = true;
+    //   setTimeout(() => {
+    //     this.showButtons = true;
+    //     setTimeout(() => {
+    //       this.showDev = true;
+    //     }, 2000);
+    //   }, 400);
+    // }, 100);
   }
 
-  ngAfterViewChecked(): void {
+  ngAfterViewInit() {
+    // window.addEventListener('orientationchange', () => {
+    //   this.dimensions = {
+    //     width: `${window.innerWidth}px`,
+    //     height: `${window.innerHeight}px`
+    //   };
+    //   console.log('this.dimensions:', this.dimensions);
+    // }, false);
   }
 
-  ngAfterViewInit() { }
+  ngAfterViewChecked(): void { }
 
-  ngOnChanges() {
-  }
+  ngOnChanges(): void { }
+
+  ngOnDestroy(): void { }
 }
