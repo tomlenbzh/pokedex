@@ -12,6 +12,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FilterPokemonPipe } from '../../../pipes/pokemon.pipe';
 
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+
 @NgModule({
   declarations: [
     PokemonListComponent,
@@ -26,6 +28,7 @@ import { FilterPokemonPipe } from '../../../pipes/pokemon.pipe';
     ScrollingModule,
     NgxSpinnerModule,
     FormsModule,
+    NgxPaginationModule,
   ]
 })
 export class PokemonListModule { }

@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { PokemonListCardComponent } from './pokemon-list-card/pokemon-list-card.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
@@ -21,7 +23,9 @@ import { PokemonLoaderComponent } from './pokemon-loader/pokemon-loader.componen
     MaterialModule,
     RouterModule,
     FormsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    LazyLoadImageModule,
+    ScrollToModule.forRoot()
   ],
   entryComponents: [
     PokemonListCardComponent,

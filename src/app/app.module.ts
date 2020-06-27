@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { LazyLoadImageModule } from 'ng-lazyload-image'; // <-- import it
+
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -20,9 +22,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     HttpClientModule,
     InfiniteScrollModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    LazyLoadImageModule,
+    ScrollToModule.forRoot()
   ],
-  providers: [ScrollToService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

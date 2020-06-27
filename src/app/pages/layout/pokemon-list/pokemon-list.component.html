@@ -2,29 +2,46 @@
 
 <div class="container mt-10">
 
-  <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <mat-form-field style="width: 100%;" appearance="outline">
-        <mat-label>Search for a Pokémon</mat-label>
-        <input matInput [(ngModel)]="searchPokemon">
-      </mat-form-field>
+  <!-- <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = getServerData($event)">
+
+  </mat-paginator> -->
+
+  <div *ngIf="!isLoading">
+
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Search for a Pokémon</mat-label>
+          <input matInput [(ngModel)]="searchPokemon">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+        *ngFor="let pokemon of pokemonsList | filterPokemons : searchPokemon | paginate: { id: 'pokemon-pagination', itemsPerPage: 50, currentPage: currentPage, totalItems: totalRecords }">
+        <app-pokemon-list-card [pokemon]="pokemon" (click)="seeDetails(pokemon)"></app-pokemon-list-card>
+      </div>
+    </div>
+
+    <div class="paging-controls">
+      <pagination-controls id="pokemon-pagination" (pageChange)="changePage($event)"></pagination-controls>
     </div>
   </div>
 
 
-  <div infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="500" (scrolled)="onScroll()">
+  <div class="loader-container" *ngIf="isLoading">
+    <app-pokemon-loader [message]="loadingMessage"></app-pokemon-loader>
+  </div>
 
+  <!-- <div infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="500" (scrolled)="onScroll()">
     <div class="row">
       <div *ngFor="let pokemon of pokemonsList | filterPokemons : searchPokemon"
         class="col-12 col-sm-6 col-md-4 col-lg-3">
         <app-pokemon-list-card [pokemon]="pokemon" (click)="seeDetails(pokemon)"></app-pokemon-list-card>
       </div>
     </div>
-
-    <div class="loader-container" *ngIf="isLoading">
-      <app-pokemon-loader [message]="loadingMessage"></app-pokemon-loader>
-    </div>
-
-  </div>
+  </div> -->
 
 </div>
