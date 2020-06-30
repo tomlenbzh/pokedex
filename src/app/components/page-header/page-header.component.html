@@ -1,8 +1,7 @@
-<div class="page-header" id="header">
-  <div class="container header-content">
-    <h1 class="header-title animate__animated animate__zoomIn">{{ title }}</h1>
+<div class="page-header" id="header" [defaultImage]="bgImg" [lazyLoad]="bgImg">
+  <div class="container header-content" style="display: flex;">
+    <img class="home-img" matTooltip="Home" [defaultImage]="homeImg" [lazyLoad]="homeImg" [routerLink]="['/']">
+    <h1 class="header-title animate__animated animate__fadeInRight">{{ title }}</h1>
   </div>
-
-  <img [src]="homeImg" class="right-img animate__animated animate__backInRight" matTooltip="Home"
-    [routerLink]="['/pokedex']">
+  <img class="right-img" [defaultImage]="mewImg" [lazyLoad]="mewImg">
 </div>

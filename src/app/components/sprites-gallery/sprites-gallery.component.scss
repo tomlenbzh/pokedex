@@ -1,0 +1,44 @@
+.sprites-title {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0b1829;
+}
+
+.image-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all ease-in-out 0.5s;
+}
+
+.sprite {
+  width: 150px;
+  transition: all ease-in-out 0.5s;
+}
+
+.sprite-name {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: small;
+  color: #0b1829;
+  margin: 0 !important;
+  transition: all ease-in-out 0.5s;
+}
+
+@media only screen and (max-width: 767px) {
+  .sprite {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .image-column {
+    flex-direction: row-reverse;
+  }
+  .sprite-name {
+    width: 100%;
+  }
+}

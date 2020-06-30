@@ -1,13 +1,11 @@
 .page-header {
   height: 25vh;
-  background-image: url("../../../assets/images/Stars.jpg");
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: row;
   align-items: center;
-  // padding-bottom: 20px;
   position: relative;
   overflow: hidden;
   transition: all ease-in-out 0.3s;
@@ -36,22 +34,26 @@
 }
 
 .right-img {
-  height: 80%;
+  height: 50%;
   position: absolute;
   right: 5%;
-  top: 10%;
+  top: 25%;
   bottom: 0;
-  cursor: pointer;
-  transition: all ease-in-out 0.3s;
-}
-
-.right-img:hover {
-  height: 70%;
-  top: 15%;
 }
 
 img:focus {
   outline: none;
+}
+
+.home-img {
+  height: 30px;
+  margin-right: 20px;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.home-img:hover {
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 /* MEDIA QUERIES */
@@ -71,6 +73,9 @@ img:focus {
 @media only screen and (max-width: 500px) {
   .page-header {
     height: 15vh;
+  }
+  .home-img {
+    height: 25px;
   }
   .header-title {
     font-size: large;

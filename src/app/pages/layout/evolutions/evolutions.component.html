@@ -1,0 +1,20 @@
+<app-page-header [title]="pageTitle"></app-page-header>
+
+<div class="page-wrapper">
+  <div class="container">
+    <div *ngIf="!isLoading">
+
+      <div class="row">
+        <div class="evolution-trees col-12 col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3"
+          *ngFor="let evolutionTree of evolutionsList | paginate: { id: 'pokemon-pagination', itemsPerPage: 15, currentPage: currentPage, totalItems: totalRecords }">
+          <app-evolution-tree [evolutionTree]="evolutionTree"></app-evolution-tree>
+        </div>
+      </div>
+
+      <div class="paging-controls">
+        <pagination-controls id="pokemon-pagination" (pageChange)="changePage($event)"></pagination-controls>
+      </div>
+
+    </div>
+  </div>
+</div>

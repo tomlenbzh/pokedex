@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { PokemonType } from '../../../models/types.model';
-import { typeList } from '../../../data/types.data';
+import { typeList, TypesGif } from '../../../data/types.data';
 
 import { PokedexService } from '../../../services/pokedex.service';
+import { EvolutionService } from '../../../services/evolution.service';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -17,6 +18,8 @@ export class PokemonDetailsComponent implements OnInit {
   showHeader: boolean;
   showAbilities: boolean;
   showMoves: boolean;
+  showStats: boolean;
+  showSprites: boolean;
 
   pageTitle = 'Pokémon Details';
   pokemonId: number;
@@ -24,10 +27,7 @@ export class PokemonDetailsComponent implements OnInit {
   typesList: PokemonType[] = typeList;
   panelOpenState = false;
 
-  selectedGif = {
-    type: '',
-    class: ''
-  };
+  selectedGif = { type: '', class: '' };
 
   pokemonDetails = {
     img: '',
@@ -39,10 +39,14 @@ export class PokemonDetailsComponent implements OnInit {
     types: [],
     colour: {},
     weight: 0,
-    name: ''
+    name: '',
+    stats: []
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private pokedexService: PokedexService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private pokedexService: PokedexService,
+  ) {
     this.pokemonId = this.activatedRoute.snapshot.params.id;
     this.pokemonDetails.img = `https://pokeres.bastionbot.org/images/pokemon/${this.pokemonId}.png`;
   }
@@ -52,11 +56,13 @@ export class PokemonDetailsComponent implements OnInit {
     this.showHeader = false;
     this.showAbilities = false;
     this.showMoves = false;
+    this.showSprites = false;
+    this.showStats = false;
     this.getPokemonDetails();
   }
 
   public hasGif(type: string): boolean {
-    const supportedTypes = ['Water', 'Flying', 'Ground', 'Electric', 'Fairy', 'Fire', 'Ghost', 'Grass', 'Poison', 'Bug', 'Fighting', 'Ice', 'Rock'];
+    const supportedTypes = TypesGif;
     this.selectedGif.class = `${type.toLowerCase()}-gif`;
     return supportedTypes.includes(type) ? true : false;
   }
@@ -78,48 +84,52 @@ export class PokemonDetailsComponent implements OnInit {
     return weight / 10;
   }
 
-  public getTypeIcon(type: string): string {
-    return `assets/images/types/${type}.png`;
-  }
-
   getPokemonDetails(): void {
 
-    this.pokedexService.fetchPokemonDetails(this.pokemonId).subscribe((pokemonData) => {
+    this.pokedexService.fetchPokemonDetails(this.pokemonId)
+      .subscribe((pokemonData) => {
 
-      this.pokemonDetails.height = pokemonData.height;
-      this.pokemonDetails.weight = pokemonData.weight;
-      this.pokemonDetails.baseExperience = pokemonData.base_experience;
-      this.pokemonDetails.types = pokemonData.types;
-      this.pokemonDetails.sprites = pokemonData.sprites;
-      this.pokemonDetails.name = pokemonData.name;
+        this.pokemonDetails.height = pokemonData.height;
+        this.pokemonDetails.weight = pokemonData.weight;
+        this.pokemonDetails.baseExperience = pokemonData.base_experience;
+        this.pokemonDetails.types = pokemonData.types;
+        this.pokemonDetails.sprites = pokemonData.sprites;
+        this.pokemonDetails.name = pokemonData.name;
 
-      this.getPokemonAbilities(pokemonData)
-        .then(() => {
-          console.log('this.pokemonDetails:', this.pokemonDetails);
-          this.getPokemonMoves(pokemonData)
-            .then(() => {
-              console.log('this.pokemonDetails:', this.pokemonDetails);
-              this.pokemonDetails.colour = this.processType(this.pokemonDetails);
-              this.isLoading = false;
-              setTimeout(() => {
-                this.showHeader = true;
+        this.getPokemonAbilities(pokemonData)
+          .then(() => {
+
+            this.getPokemonMoves(pokemonData)
+              .then(() => {
+
+                this.pokemonDetails.stats = pokemonData.stats;
+                console.log('this.pokemonDetails:', this.pokemonDetails);
+                this.pokemonDetails.colour = this.processType(this.pokemonDetails);
+                this.isLoading = false;
 
                 setTimeout(() => {
-                  this.showAbilities = true;
-
+                  this.showHeader = true;
                   setTimeout(() => {
-                    this.showMoves = true;
-                  }, 500);
-                }, 1500);
-              }, 500);
-            })
-            .catch(() => {
-              this.isLoading = false;
-            });
-        }).catch(() => {
-          this.isLoading = false;
-        });
-    });
+                    this.showStats = true;
+                    setTimeout(() => {
+                      this.showSprites = true;
+                      setTimeout(() => {
+                        this.showAbilities = true;
+                        setTimeout(() => {
+                          this.showMoves = true;
+                        }, 200);
+                      }, 200);
+                    }, 200);
+                  }, 2000);
+                }, 200);
+              })
+              .catch(() => {
+                this.isLoading = false;
+              });
+          }).catch(() => {
+            this.isLoading = false;
+          });
+      });
   }
 
   getPokemonMoves(pokemonData: any): Promise<any> {
@@ -184,7 +194,7 @@ export class PokemonDetailsComponent implements OnInit {
     });
   }
 
-  clicked($event) {
+  public clicked($event: any) {
     console.log('EVENT:', $event);
   }
 }

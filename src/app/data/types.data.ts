@@ -21,3 +21,19 @@ export const typeList: PokemonType[] = [
   { type: 'Fairy', class: 'type-fairy' },
   { type: '???', class: 'type-unknown' },
 ];
+
+export const TypesGif: string[] = [
+  'Water',
+  'Flying',
+  'Ground',
+  'Electric',
+  'Fairy',
+  'Fire',
+  'Ghost',
+  'Grass',
+  'Poison',
+  'Bug',
+  'Fighting',
+  'Ice',
+  'Rock'
+];

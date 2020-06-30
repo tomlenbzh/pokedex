@@ -1,0 +1,74 @@
+.evolution-node {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.pokemon-name {
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0b1829;
+}
+
+.pokemon-id {
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0b1829;
+}
+
+.evolution-img {
+  width: 100px;
+}
+
+.pokemon-image-container {
+  width: 30%;
+  transition: all ease-in-out 0.5s;
+}
+
+.pokemon-info-container {
+  width: 70%;
+  transition: all ease-in-out 0.5s;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info-label {
+  width: 120px;
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #9ba3a7;
+}
+
+.info-value {
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0b1829;
+}
+
+@media only screen and (max-width: 360px) {
+  .pokemon-image-container {
+    width: 25%;
+  }
+  .evolution-img {
+    width: 100%;
+  }
+  .pokemon-info-container {
+    width: 75%;
+    padding-left: 5%;
+  }
+}

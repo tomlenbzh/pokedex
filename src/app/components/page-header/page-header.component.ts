@@ -9,19 +9,11 @@ import { Router } from '@angular/router';
 export class PageHeaderComponent implements OnInit {
 
   @Input() title: string;
-  homeImg: string;
-  url: string;
+  homeImg = '../../../assets/images/Pokeball-Home.png';
+  mewImg = '../../../assets/images/MewLoader.png';
+  bgImg = '../../../assets/images/Wallpapers/Stars.jpg';
 
-  constructor(private router: Router) {
-    this.url = '../../../../assets/images/';
-  }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
-    if (this.router.url.includes('/pokemon-details')) {
-      this.homeImg = `${this.url}/Ho_oHLoader.png`;
-    } else {
-      this.homeImg = `${this.url}/MewLoader.png`;
-    }
-  }
-
+  ngOnInit(): void { }
 }

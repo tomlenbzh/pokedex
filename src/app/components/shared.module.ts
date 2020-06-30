@@ -11,12 +11,26 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { PokemonListCardComponent } from './pokemon-list-card/pokemon-list-card.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { PokemonLoaderComponent } from './pokemon-loader/pokemon-loader.component';
+import { EvolutionTreeComponent } from './evolution-tree/evolution-tree.component';
+import { EvolutionNodeComponent } from './evolution-node/evolution-node.component';
+import { AbilitiesListComponent } from './abilities-list/abilities-list.component';
+import { PokemonDetailHeaderComponent } from './pokemon-detail-header/pokemon-detail-header.component';
+import { MovesListComponent } from './moves-list/moves-list.component';
+import { StatsListComponent } from './stats-list/stats-list.component';
+import { SpritesGalleryComponent } from './sprites-gallery/sprites-gallery.component';
 
 @NgModule({
   declarations: [
     PokemonListCardComponent,
     PageHeaderComponent,
-    PokemonLoaderComponent
+    PokemonLoaderComponent,
+    EvolutionTreeComponent,
+    EvolutionNodeComponent,
+    AbilitiesListComponent,
+    MovesListComponent,
+    PokemonDetailHeaderComponent,
+    StatsListComponent,
+    SpritesGalleryComponent,
   ],
   imports: [
     CommonModule,
@@ -30,12 +44,24 @@ import { PokemonLoaderComponent } from './pokemon-loader/pokemon-loader.componen
   entryComponents: [
     PokemonListCardComponent,
     PageHeaderComponent,
-    PokemonLoaderComponent
+    PokemonLoaderComponent,
+    EvolutionTreeComponent,
+    AbilitiesListComponent,
+    MovesListComponent,
+    PokemonDetailHeaderComponent,
+    StatsListComponent,
+    SpritesGalleryComponent
   ],
   exports: [
     PokemonListCardComponent,
     PageHeaderComponent,
-    PokemonLoaderComponent
+    PokemonLoaderComponent,
+    EvolutionTreeComponent,
+    AbilitiesListComponent,
+    MovesListComponent,
+    PokemonDetailHeaderComponent,
+    StatsListComponent,
+    SpritesGalleryComponent
   ]
 })
 export class SharedModule { }

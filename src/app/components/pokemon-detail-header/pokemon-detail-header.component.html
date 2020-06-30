@@ -1,0 +1,54 @@
+<!-- POKEMON DETAILS HEADER -->
+<mat-card class="pokemon-details-header animate__animated animate__fadeIn" [class]="pokemonDetails?.colour.class">
+
+  <!-- POKEMON STATS -->
+  <div class="pokemon-stats">
+    <div class="stats">
+
+      <!-- POKEMON NAME -->
+      <h1 class="pokemon-name">{{ pokemonDetails?.name }}</h1>
+
+      <div class="details-items-grid">
+
+        <!-- POKEMON HEIGHT -->
+        <div class="details-item">
+          <div class="header-label">Height :</div>
+          <div class="header-value">{{ processHeight(pokemonDetails?.height) }} m</div>
+        </div>
+
+        <!-- POKEMON WEIGHT -->
+        <div class="details-item">
+          <div class="header-label">Weight :</div>
+          <div class="header-value">{{ processWeight(pokemonDetails?.weight) }} Kg</div>
+        </div>
+
+        <!-- POKEMON BASE XP -->
+        <div class="details-item">
+          <div class="header-label">Base Exp :</div>
+          <div class="header-value">{{ pokemonDetails?.baseExperience }} pts</div>
+        </div>
+
+        <!-- POKEMON TYPES -->
+        <div class="details-item item-types">
+          <div class="header-label">Type(s) :</div>
+          <div class="types-container">
+            <div class="type" *ngFor="let typeObject of pokemonDetails?.types">
+              <img [src]="getTypeIcon(typeObject.type.name)" class="type-img">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- POKEMON IMAGE -->
+  <div class="header-img animate__animated animate__fadeInRight animate__delay-1s">
+    <img [src]="pokemonDetails?.img" class="pokemon-img">
+  </div>
+
+  <!-- POKEMON BACKGROUND GIF -->
+  <div *ngIf="hasGif(pokemonDetails?.colour.type)">
+    <img [src]="getGif(pokemonDetails?.colour.type)" [class]="selectedGif.class">
+  </div>
+</mat-card>

@@ -1,0 +1,19 @@
+<!-- POKEMON ABILITIES LIST -->
+<div class="abilities-list">
+  <h1 class="abilities-title">Abilities ({{ abilitiesList.length }})</h1>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let ability of abilitiesList">
+
+      <!-- ABILITY NAME -->
+      <mat-expansion-panel-header>
+        <mat-panel-title class="abilities-name">{{ ability.name }}</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <!-- ABILITY DESCRIPTION -->
+      <div class="ability-txt" *ngFor="let entry of ability.detail.effect_entries">
+        <div *ngIf="entry.language.name === 'en'">{{ entry.effect }}</div>
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

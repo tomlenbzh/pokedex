@@ -1,0 +1,28 @@
+.evolution-card {
+  position: relative;
+  margin-top: 25px;
+}
+
+.evolution-tree {
+  display: flex;
+  flex-direction: column;
+}
+
+.evolution-item {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.evolution-divider {
+  width: 100%;
+  border-bottom: solid 1px #cccccc;
+  margin: 20px 0;
+}
+
+.rotateBtn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: #0b1829;
+}

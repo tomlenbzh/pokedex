@@ -1,0 +1,63 @@
+<div class="evolution-node">
+
+  <h5 class="pokemon-id">{{ processId(pokemon?.species_id) }}</h5>
+
+  <div class="wrapper mt-10">
+    <div class="pokemon-image-container">
+      <img [defaultImage]="pokemon?.img" [lazyLoad]="pokemon?.img" class="evolution-img"
+        onerror="this.src='../../../assets/images/img-placeholder.gif'">
+    </div>
+
+    <div class="pokemon-info-container">
+      <h2 class="pokemon-name">{{ processName(pokemon?.species_name) }}</h2>
+
+      <div class="pokemon-info" *ngIf="!isFirstPokemon(pokemon)">
+
+        <div *ngIf="pokemon.trigger_name === null">
+          <div class="info-item">
+            <h5 class="info-label">Min lvl:</h5>
+            <h5 class="info-value">{{ pokemon?.min_level }}</h5>
+          </div>
+        </div>
+
+        <div *ngIf="pokemon.trigger_name === 'level-up'">
+          <div class="info-item">
+            <h5 class="info-label">Trigger:</h5>
+            <h5 class="info-value">Level up</h5>
+          </div>
+
+          <div class="info-item">
+            <h5 class="info-label">Min lvl:</h5>
+            <h5 class="info-value">{{ pokemon?.min_level }}</h5>
+          </div>
+        </div>
+
+        <div *ngIf="pokemon.trigger_name === 'trade'">
+          <div class="info-item">
+            <h5 class="info-label">Trigger:</h5>
+            <h5 class="info-value">Trade</h5>
+          </div>
+        </div>
+
+        <div *ngIf="pokemon.trigger_name === 'use-item'">
+          <div class="info-item">
+            <h5 class="info-label">Trigger:</h5>
+            <h5 class="info-value">Use an item</h5>
+          </div>
+
+          <div class="info-item">
+            <h5 class="info-label">Item:</h5>
+            <h5 class="info-value">{{ processItemName(pokemon?.item.name)  }}</h5>
+            <img [src]="pokemon?.item.sprites.default" style="margin-left: 10px; width: 30px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-container txt-r">
+    <button mat-stroked-button matTooltip="See this Pokémon's details" (click)="goToPokemonDetails(pokemon.species_id)">
+      More info
+    </button>
+  </div>
+</div>

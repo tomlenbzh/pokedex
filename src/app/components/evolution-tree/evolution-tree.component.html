@@ -1,0 +1,21 @@
+<mat-card class="evolution-card">
+  <button mat-mini-fab color="primary" class="rotateBtn" (click)="toggleEvolutionTree()" matTooltip="Show evolutions">
+    <mat-icon [@rotateIcon]=showEvolutions>arrow_downward</mat-icon>
+  </button>
+  <div class="evolution-tree">
+    <div class="evolution-item" *ngFor="let pokemon of evolutionTree; let i=index">
+
+      <div *ngIf="isFirstPokemon(pokemon)" style="width: 100%;">
+        <app-evolution-node [pokemon]="pokemon"></app-evolution-node>
+      </div>
+
+      <div *ngIf="!isFirstPokemon(pokemon)" style="width: 100%;">
+        <div [@showEvolutions]=showEvolutions>
+          <div class="evolution-divider" *ngIf="showEvolutions === true"></div>
+          <app-evolution-node [pokemon]="pokemon"></app-evolution-node>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</mat-card>

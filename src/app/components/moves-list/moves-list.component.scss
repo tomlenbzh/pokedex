@@ -1,0 +1,67 @@
+.move-title {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0b1829;
+}
+
+.move-name {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0b1829;
+}
+
+.move-txt {
+  font-weight: 500;
+  font-size: small;
+  color: #22313c;
+}
+
+.skill-label {
+  color: #404c52;
+}
+
+.move-details {
+  margin-bottom: 20px;
+}
+
+.type-img {
+  height: 20px;
+}
+
+.details-items-grid {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.details-item {
+  display: flex;
+  flex-direction: row;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.move-label {
+  width: 100px;
+  transition: all ease-in-out 0.5s;
+}
+
+.move-txt {
+  font-weight: 500;
+  font-size: small;
+  color: #22313c;
+}
+
+.move-type {
+  margin-right: 30px;
+  transition: all ease-in-out 0.5s;
+}
+
+@media only screen and (max-width: 360px) {
+  .move-type {
+    display: none;
+  }
+}
