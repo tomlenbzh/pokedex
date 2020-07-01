@@ -20,6 +20,7 @@ export class PokemonDetailsComponent implements OnInit {
   showMoves: boolean;
   showStats: boolean;
   showSprites: boolean;
+  pokemonError: boolean;
 
   pageTitle = 'Pokémon Details';
   pokemonId: number;
@@ -48,6 +49,7 @@ export class PokemonDetailsComponent implements OnInit {
     private pokedexService: PokedexService,
   ) {
     this.pokemonId = this.activatedRoute.snapshot.params.id;
+    this.pokemonError = false;
     this.pokemonDetails.img = `https://pokeres.bastionbot.org/images/pokemon/${this.pokemonId}.png`;
   }
 
@@ -124,11 +126,17 @@ export class PokemonDetailsComponent implements OnInit {
                 }, 200);
               })
               .catch(() => {
+                this.pokemonError = true;
                 this.isLoading = false;
               });
           }).catch(() => {
+            this.pokemonError = true;
             this.isLoading = false;
           });
+      }, (error) => {
+        console.log('[ERROR]', error);
+        this.pokemonError = true;
+        this.isLoading = false;
       });
   }
 

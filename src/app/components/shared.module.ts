@@ -18,6 +18,8 @@ import { PokemonDetailHeaderComponent } from './pokemon-detail-header/pokemon-de
 import { MovesListComponent } from './moves-list/moves-list.component';
 import { StatsListComponent } from './stats-list/stats-list.component';
 import { SpritesGalleryComponent } from './sprites-gallery/sprites-gallery.component';
+import { PokemonErrorCardComponent } from './pokemon-error-card/pokemon-error-card.component';
+import { TypeDetailHeaderComponent } from './type-detail-header/type-detail-header.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { SpritesGalleryComponent } from './sprites-gallery/sprites-gallery.compo
     PokemonDetailHeaderComponent,
     StatsListComponent,
     SpritesGalleryComponent,
+    PokemonErrorCardComponent,
+    TypeDetailHeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +54,9 @@ import { SpritesGalleryComponent } from './sprites-gallery/sprites-gallery.compo
     MovesListComponent,
     PokemonDetailHeaderComponent,
     StatsListComponent,
-    SpritesGalleryComponent
+    SpritesGalleryComponent,
+    PokemonErrorCardComponent,
+    TypeDetailHeaderComponent
   ],
   exports: [
     PokemonListCardComponent,
@@ -61,7 +67,9 @@ import { SpritesGalleryComponent } from './sprites-gallery/sprites-gallery.compo
     MovesListComponent,
     PokemonDetailHeaderComponent,
     StatsListComponent,
-    SpritesGalleryComponent
+    SpritesGalleryComponent,
+    PokemonErrorCardComponent,
+    TypeDetailHeaderComponent
   ]
 })
 export class SharedModule { }

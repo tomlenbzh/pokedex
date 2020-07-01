@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PokemonGender } from '../../models/genders.model';
 
 @Component({
   selector: 'app-pokemon-list-card',

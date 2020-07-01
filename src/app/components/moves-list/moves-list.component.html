@@ -17,7 +17,8 @@
 
         <!-- MOVE TYPE -->
         <div class="type mb-20">
-          <img [src]="getTypeIcon(move.detail.type.name)" class="type-img">
+          <img [src]="getTypeIcon(move.detail.type.name)" class="type-img clickable"
+            (click)="goToTypeDetails(move.detail.type)">
         </div>
 
         <div *ngIf="entry.language.name === 'en'" class="move-effect">

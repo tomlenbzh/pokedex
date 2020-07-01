@@ -1,0 +1,28 @@
+.type-button {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.button-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.type-name {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.type-img {
+  cursor: pointer;
+  display: flex;
+  width: 40px;
+  margin: 0;
+  transition: all ease-in-out 0.3s;
+}

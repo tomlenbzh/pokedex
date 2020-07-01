@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { PokemonType } from '../../models/types.model';
-import { typeList } from '../../data/types.data';
+import { typeList, TypesGif } from '../../data/types.data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-detail-header',
@@ -14,12 +15,12 @@ export class PokemonDetailHeaderComponent implements OnInit {
   selectedGif = { type: '', class: '' };
   typesList: PokemonType[] = typeList;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void { }
 
   public hasGif(type: string): boolean {
-    const supportedTypes = ['Water', 'Flying', 'Ground', 'Electric', 'Fairy', 'Fire', 'Ghost', 'Grass', 'Poison', 'Bug', 'Fighting', 'Ice', 'Rock'];
+    const supportedTypes = TypesGif;
     this.selectedGif.class = `${type.toLowerCase()}-gif`;
     return supportedTypes.includes(type) ? true : false;
   }
@@ -45,4 +46,7 @@ export class PokemonDetailHeaderComponent implements OnInit {
     return `assets/images/types/${type}.png`;
   }
 
+  public goToTypeDetails(type: any): void {
+    this.router.navigateByUrl(`/type-details/${type.name}`);
+  }
 }

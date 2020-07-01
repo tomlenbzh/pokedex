@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-// @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
-// @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
@@ -263,6 +262,10 @@ input:focus {
 }
 
 // Pokémon Types
+.type-shadow {
+  background: linear-gradient(140deg, #243141 0%, #323d48 27%, white 100%);
+  color: #d8d8d8;
+}
 
 .type-grass {
   background: linear-gradient(140deg, #64bc5b 30%, #022803 86%);

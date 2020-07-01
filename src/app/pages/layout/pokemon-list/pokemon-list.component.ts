@@ -144,10 +144,6 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     }, 300);
   }
 
-  // public processNames(names: any[]): any[] {
-  //   return names.map((x) => `Generation ${x.name.split('-')[1].toUpperCase()}`);
-  // }
-
   public processType(pokemon: any): any {
     return this.typesList.filter(x => x.type.toLowerCase() === pokemon.types[0].type.name);
   }

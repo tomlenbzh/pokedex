@@ -32,7 +32,8 @@
         <div class="details-item item-types">
           <div class="header-label">Type(s) :</div>
           <div class="types-container">
-            <div class="type" *ngFor="let typeObject of pokemonDetails?.types">
+            <div class="type" *ngFor="let typeObject of pokemonDetails?.types"
+              (click)="goToTypeDetails(typeObject.type)">
               <img [src]="getTypeIcon(typeObject.type.name)" class="type-img">
             </div>
           </div>

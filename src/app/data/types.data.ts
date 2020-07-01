@@ -20,6 +20,7 @@ export const typeList: PokemonType[] = [
   { type: 'Steel', class: 'type-steel' },
   { type: 'Fairy', class: 'type-fairy' },
   { type: '???', class: 'type-unknown' },
+  { type: 'shadow', class: 'type-shadow' },
 ];
 
 export const TypesGif: string[] = [
