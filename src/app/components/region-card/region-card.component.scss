@@ -1,0 +1,88 @@
+.region-card {
+  position: relative;
+  margin-top: 25px;
+}
+
+.region-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.region-title {
+  margin: 0;
+  width: 100%;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0b1829;
+}
+
+.rotateBtn {
+  background: #0b1829;
+}
+
+.region-info {
+  width: 100%;
+  overflow: hidden;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.item-label,
+.item-value {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  color: #0b1829;
+}
+
+.item-label {
+  width: 150px;
+}
+
+.versions-item {
+  flex-direction: column;
+}
+
+.version-group {
+  width: 100%;
+  display: flex;
+}
+
+.versions-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.version-cover-img {
+  width: 100%;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+
+.version-cover-img:hover {
+  filter: brightness(0.5);
+}
+
+.item-map {
+  flex-direction: column;
+}
+
+.region-map {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 359px) {
+  .generation {
+    display: none;
+  }
+}

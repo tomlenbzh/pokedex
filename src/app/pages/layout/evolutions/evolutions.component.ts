@@ -19,7 +19,6 @@ export class EvolutionsComponent implements OnInit {
   currentPage: number;
 
   constructor(
-    private router: Router,
     private titleService: Title,
     private evolutionService: EvolutionService,
     private scrollToService: ScrollToService
@@ -40,20 +39,17 @@ export class EvolutionsComponent implements OnInit {
   private initEvolutionsList(): void {
     this.getAllRawEvolutions()
       .then((evolutions: any) => {
-
         this.getAllEvolutionTrees(evolutions)
           .then((evolutionsList) => {
             localStorage.setItem('evolutionsList', JSON.stringify(evolutionsList));
             this.totalRecords = evolutionsList.length;
             this.evolutionsList = evolutionsList;
-            console.log('this.evolutionsList:', this.evolutionsList);
             this.isLoading = false;
           })
           .catch((error) => {
             console.log('[ERROR]', error);
             this.isLoading = false;
           });
-
       })
       .catch((error) => {
         console.log('[ERROR]', error);
@@ -65,19 +61,11 @@ export class EvolutionsComponent implements OnInit {
     return localStorage.getItem('evolutionsList') !== null ? true : false;
   }
 
-  // private filterEvolution(): any {
-  //   const filter = 'bulbasaur';
-  //   return this.evolutionsList.map((evolTree: any) => {
-  //     return evolTree.filter((pokemon: any) => pokemon.specie_name.includes(filter));
-  //   });
-  // }
-
   private getEvolutionsFromStorage(): void {
     const evolutionsList = JSON.parse(localStorage.getItem('evolutionsList'));
     this.totalRecords = evolutionsList.length;
     this.evolutionsList = evolutionsList;
     this.isLoading = false;
-    // console.log('this.filterEvolution()', this.filterEvolution());
   }
 
   public changePage($event: any) {
@@ -95,7 +83,7 @@ export class EvolutionsComponent implements OnInit {
           resolve(evolutionsList);
         }, (error) => {
           console.log('[ERROR] - [getAllRawEvolutions]', error);
-          reject();
+          reject(error);
         });
     });
   }

@@ -1,0 +1,10 @@
+<app-page-header [title]="pageTitle"></app-page-header>
+
+<div class="container mt-10">
+  <div *ngIf="isLoading">Loading</div>
+  <div *ngIf="showRegions">
+    <div *ngFor="let region of regionsList;" class="col-12 col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <app-region-card [regionInfo]="region"></app-region-card>
+    </div>
+  </div>
+</div>

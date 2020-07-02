@@ -1,0 +1,56 @@
+<!-- TYPE DAMAGES LIST -->
+<div class="damage-list">
+  <h1 class="card-title">Damages</h1>
+
+  <!-- DOUBLE DAMAGE FROM -->
+  <mat-card>
+    <div class="damages-item">
+      <h3 class="damage-title">Double damage from:</h3>
+      <p class="damage-desc">A Pokémon of this type will take double damage from Pokémons of the following types:</p>
+      <div class="damage-types">
+        <img [defaultImage]="getTypeIcon(type.name)" [lazyLoad]="getTypeIcon(type.name)"
+          class="type-img mr-10 animate__animated animate__fadeIn" (click)="goToTypeDetail(type.name)"
+          *ngFor="let type of typeInfo.damage_relations.double_damage_from">
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- DOUBLE DAMAGE TO -->
+  <mat-card class="mt-30">
+    <div class="damages-item">
+      <h3 class="damage-title">Double damage to:</h3>
+      <p class="damage-desc">A Pokémon of this type will inflict double damage to Pokémons of the following types:</p>
+      <div class="damage-types">
+        <img [defaultImage]="getTypeIcon(type.name)" [lazyLoad]="getTypeIcon(type.name)"
+          class="type-img mr-10 animate__animated animate__fadeIn" (click)="goToTypeDetail(type.name)"
+          *ngFor="let type of typeInfo.damage_relations.double_damage_to">
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- HALF DAMAGE FROM -->
+  <mat-card class="mt-30">
+    <div class="damages-item">
+      <h3 class="damage-title">Half damage from:</h3>
+      <p class="damage-desc">A Pokémon of this type will take half damage from Pokémons of the following types:</p>
+      <div class="damage-types">
+        <img [defaultImage]="getTypeIcon(type.name)" [lazyLoad]="getTypeIcon(type.name)"
+          class="type-img mr-10 animate__animated animate__fadeIn" (click)="goToTypeDetail(type.name)"
+          *ngFor="let type of typeInfo.damage_relations.half_damage_from">
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- HALF DAMAGE TO -->
+  <mat-card class="mt-30">
+    <div class="damages-item">
+      <h3 class="damage-title">Half damage to:</h3>
+      <p class="damage-desc">A Pokémon of this type will inflict half damage to Pokémons of the following types:</p>
+      <div class="damage-types">
+        <img [defaultImage]="getTypeIcon(type.name)" [lazyLoad]="getTypeIcon(type.name)"
+          class="type-img mr-10 animate__animated animate__fadeIn" (click)="goToTypeDetail(type.name)"
+          *ngFor="let type of typeInfo.damage_relations.half_damage_to">
+      </div>
+    </div>
+  </mat-card>
+</div>

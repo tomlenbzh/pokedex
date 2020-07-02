@@ -5,11 +5,11 @@
   <div class="evolution-tree">
     <div class="evolution-item" *ngFor="let pokemon of evolutionTree; let i=index">
 
-      <div *ngIf="isFirstPokemon(pokemon)" style="width: 100%;">
+      <div *ngIf="isFirstPokemon(pokemon)" class="full-width">
         <app-evolution-node [pokemon]="pokemon"></app-evolution-node>
       </div>
 
-      <div *ngIf="!isFirstPokemon(pokemon)" style="width: 100%;">
+      <div *ngIf="!isFirstPokemon(pokemon)" class="full-width">
         <div [@showEvolutions]=showEvolutions>
           <div class="evolution-divider" *ngIf="showEvolutions === true"></div>
           <app-evolution-node [pokemon]="pokemon"></app-evolution-node>

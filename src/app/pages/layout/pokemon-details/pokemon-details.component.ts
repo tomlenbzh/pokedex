@@ -6,6 +6,7 @@ import { typeList, TypesGif } from '../../../data/types.data';
 
 import { PokedexService } from '../../../services/pokedex.service';
 import { EvolutionService } from '../../../services/evolution.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -23,6 +24,11 @@ export class PokemonDetailsComponent implements OnInit {
   pokemonError: boolean;
 
   pageTitle = 'Pokémon Details';
+  errorMessage = {
+    errorMsg: `An error occurred while fetching this pokemon's information`,
+    backMsg: 'Go back to the Pokédex',
+    dest: '/pokemon-list'
+  };
   pokemonId: number;
   loadingMessage = 'Loading Pokémon details...';
   typesList: PokemonType[] = typeList;
@@ -47,9 +53,11 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokedexService: PokedexService,
+    private titleService: Title
   ) {
     this.pokemonId = this.activatedRoute.snapshot.params.id;
     this.pokemonError = false;
+    this.titleService.setTitle('Evolutions');
     this.pokemonDetails.img = `https://pokeres.bastionbot.org/images/pokemon/${this.pokemonId}.png`;
   }
 

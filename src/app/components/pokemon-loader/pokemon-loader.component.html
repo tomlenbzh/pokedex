@@ -1,5 +1,5 @@
 <div class="loader header-title animate__animated animate__zoomIn">
-  <img class="loader-img" src="../../../assets/images/Pikachu-Loader.png">
+  <img [defaultImage]="loaderImg" [lazyLoad]="loaderImg" class="loader-img animate__animated animate__fadeIn">
   <div class="message-container">
     <h3 class="message">{{ message }}</h3>
   </div>

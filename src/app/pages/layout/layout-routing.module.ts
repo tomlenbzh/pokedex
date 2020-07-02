@@ -15,6 +15,7 @@ const routes: Routes = [{
     { path: 'evolutions', loadChildren: () => import('./evolutions/evolutions.module').then(m => m.EvolutionsModule) },
     { path: 'types', loadChildren: () => import('./types/types.module').then(m => m.TypesModule) },
     { path: 'type-details/:id', loadChildren: () => import('./type-details/type-details.module').then(m => m.TypeDetailsModule) },
+    { path: 'regions', loadChildren: () => import('./regions/regions.module').then(m => m.RegionsModule) },
     { path: '', redirectTo: 'pokedex', pathMatch: 'full' },
   ]
 }];

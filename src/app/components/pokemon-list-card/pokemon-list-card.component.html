@@ -9,14 +9,16 @@
 
     <div class="pokemon-card-types">
       <div class="type" *ngFor="let type of pokemon?.info.types">
-        <img [defaultImage]="getTypeIcon(type.type.name)" [lazyLoad]="getTypeIcon(type.type.name)" class="type-img">
+        <img [defaultImage]="getTypeIcon(type.type.name)" [lazyLoad]="getTypeIcon(type.type.name)"
+          class="type-img animate__animated animate__fadeIn">
       </div>
     </div>
   </div>
 
   <div class="right-section">
-    <img [defaultImage]="pokemon?.img" [lazyLoad]="pokemon?.img" class="animate__animated animate__fadeIn"
-      onerror="this.src='../../../assets/images/img-placeholder.gif'" class="pokemon-card-img">
+    <img [defaultImage]="pokemon?.img" [lazyLoad]="pokemon?.img"
+      class="pokemon-card-img animate__animated animate__fadeIn"
+      onerror="this.src='../../../assets/images/img-placeholder.gif'">
   </div>
 
 </div>

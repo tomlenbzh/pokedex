@@ -1,1 +1,33 @@
-<p>type-details works!</p>
+<!-- PAGE HEADER -->
+<app-page-header [title]="pageTitle"></app-page-header>
+
+<!-- CONTAINER -->
+<div class="page-wrapper">
+  <div class="container">
+
+    <!-- ERROR -->
+    <section class="mt-50 mb-50 animate__animated animate__fadeIn" *ngIf="typeError">
+      <div class="row">
+        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+          <app-pokemon-error-card [errorMessage]="errorMessage"></app-pokemon-error-card>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE LOADER -->
+    <div class="loader-container" *ngIf="isLoading">
+      <app-pokemon-loader [message]="loadingMessage"></app-pokemon-loader>
+    </div>
+
+    <!-- TYPE DETAILS HEADER -->
+    <section class="mt-50 mb-50 type-detail-header animate__animated animate__fadeIn" *ngIf="!isLoading && showHeader">
+      <app-type-detail-header [typeInfo]="typeInfo"></app-type-detail-header>
+    </section>
+
+    <!-- TYPE DETAILS CARD -->
+    <section class="mt-50 mb-50 type-detail-card animate__animated animate__fadeIn" *ngIf="!isLoading && showDamage">
+      <app-type-detail-card [typeInfo]="typeInfo"></app-type-detail-card>
+    </section>
+
+  </div>
+</div>

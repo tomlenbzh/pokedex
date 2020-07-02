@@ -8,8 +8,8 @@
     <!-- ERROR -->
     <section class="mt-50 mb-50 animate__animated animate__fadeIn" *ngIf="pokemonError">
       <div class="row">
-        <div class="col-sm-4 col-md-3 col-lg-3">
-          <app-pokemon-error-card></app-pokemon-error-card>
+        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+          <app-pokemon-error-card [errorMessage]="errorMessage"></app-pokemon-error-card>
         </div>
       </div>
     </section>
@@ -20,7 +20,7 @@
     </div>
 
     <!-- POKEMON DETAILS HEADER -->
-    <section class="pokemon-detail-header" *ngIf="showHeader">
+    <section class="pokemon-detail-header animate__animated animate__fadeIn" *ngIf="showHeader">
       <app-pokemon-detail-header [pokemonDetails]="pokemonDetails"></app-pokemon-detail-header>
     </section>
 

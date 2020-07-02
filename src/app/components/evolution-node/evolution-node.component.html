@@ -4,7 +4,8 @@
 
   <div class="wrapper mt-10">
     <div class="pokemon-image-container">
-      <img [defaultImage]="pokemon?.img" [lazyLoad]="pokemon?.img" class="evolution-img"
+      <img [defaultImage]="pokemon?.img" [lazyLoad]="pokemon?.img"
+        class="evolution-img animate__animated animate__fadeIn"
         onerror="this.src='../../../assets/images/img-placeholder.gif'">
     </div>
 
@@ -48,7 +49,8 @@
           <div class="info-item">
             <h5 class="info-label">Item:</h5>
             <h5 class="info-value">{{ processItemName(pokemon?.item.name)  }}</h5>
-            <img [src]="pokemon?.item.sprites.default" style="margin-left: 10px; width: 30px;">
+            <img [defaultImage]="pokemon?.item.sprites.default" [lazyLoad]="pokemon?.item.sprites.default"
+              class="item-sprite">
           </div>
         </div>
       </div>

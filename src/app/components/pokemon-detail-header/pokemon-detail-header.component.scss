@@ -130,11 +130,10 @@
 
 .ice-gif {
   position: absolute;
-  bottom: -50%;
-  right: -10%;
+  bottom: 0;
+  right: 0;
   height: 100%;
   z-index: 1;
-  height: 200%;
   transition: all ease-in-out 0.5s;
 }
 

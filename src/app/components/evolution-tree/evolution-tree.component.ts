@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { ToggleEvolutions, RotateIcon } from '../../animations/evolutions.animation';
 
 @Component({
@@ -20,9 +19,7 @@ export class EvolutionTreeComponent implements OnInit {
     this.showEvolutions = false;
   }
 
-  ngOnInit(): void {
-    console.log('EVOLUTION TREE:', this.evolutionTree);
-  }
+  ngOnInit(): void { }
 
   public toggleEvolutionTree(): void {
     this.showEvolutions = !this.showEvolutions;

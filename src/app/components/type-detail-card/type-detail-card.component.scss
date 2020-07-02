@@ -1,0 +1,34 @@
+.card-title {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all ease-in-out 0.5s;
+  color: #0b1829;
+}
+
+.damage-title {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  color: #0b1829;
+  transition: all ease-in-out 0.5s;
+}
+
+.damage-desc {
+  font-weight: 500;
+  font-size: small;
+  color: #22313c;
+  transition: all ease-in-out 0.5s;
+}
+
+.type-img {
+  height: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+}
+
+.type-img:hover {
+  filter: brightness(0.5);
+}

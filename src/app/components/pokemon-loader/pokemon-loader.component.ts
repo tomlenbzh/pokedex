@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PokemonLoaderComponent implements OnInit {
 
   @Input() message: string;
+  loaderImg = '../../../assets/images/Pikachu-Loader.png';
 
   constructor() { }
 

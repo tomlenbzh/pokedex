@@ -17,7 +17,7 @@ export class TypeService {
     return this.http.get<any>(`${this.apiUrl}/type`);
   }
 
-  public getType(url: string): Observable<any> {
-    return this.http.get<any>(url);
+  public getType(typeId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/type/${typeId}`);
   }
 }
