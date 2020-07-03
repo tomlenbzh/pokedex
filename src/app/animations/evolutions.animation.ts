@@ -2,7 +2,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 
 export const ToggleEvolutions = trigger('showEvolutions', [
   state('false', style({ height: '0px' })),
-  state('true', style({ maxHeight: '100vh' })),
+  state('true', style({ maxHeight: '100%' })),
   transition('false=>true', animate('100ms')),
   transition('true=>false', animate('100ms'))
 ]);
