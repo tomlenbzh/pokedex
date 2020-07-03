@@ -1,0 +1,90 @@
+.navigation-box {
+  margin: 50px 0;
+}
+
+.box-container {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top right;
+  height: 250px;
+  overflow: hidden;
+}
+
+.box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(140deg, #181716 10%, rgba(24, 23, 22, 0.9139005944) 35%, rgba(255, 255, 255, 0) 88%);
+}
+
+.box-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  color: white;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all ease-in-out 0.5s;
+}
+
+.box-text-container {
+  width: 100%;
+}
+
+.box-title {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: 100;
+  font-size: 50px;
+  text-transform: uppercase;
+  color: white;
+  transition: all ease-in-out 0.5s;
+}
+
+.box-subtitle {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: 100;
+  text-transform: uppercase;
+  color: white;
+}
+
+.box-button {
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: medium;
+  background: #272727;
+  border: 1px solid white;
+  padding: 5px 15px;
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 767px) {
+  .box-title {
+    font-family: "Aldrich", sans-serif !important;
+    font-weight: 100;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .box-content {
+    text-align: center;
+  }
+}

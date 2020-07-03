@@ -6,6 +6,7 @@ import { PokedexComponent } from './pokedex.component';
 
 import { MaterialModule } from '../../../material.module';
 import { SharedModule } from '../../../components/shared.module';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [PokedexComponent],
@@ -13,7 +14,8 @@ import { SharedModule } from '../../../components/shared.module';
     CommonModule,
     PokedexRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    LazyLoadImageModule
   ]
 })
 export class PokedexModule { }

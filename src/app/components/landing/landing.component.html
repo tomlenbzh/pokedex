@@ -1,0 +1,22 @@
+<div class="home-full-height-container" [defaultImage]="homeBg" [lazyLoad]="homeBg" id="home"></div>
+
+<div class="bg-content">
+  <div class="bg-content-middle animate__animated animate__fadeIn">
+
+    <h1 class="bg-title">My Pokedex</h1>
+    <h3 class="bg-subtitle">Thomas Lenoel</h3>
+
+    <div class="technology mt-50">
+      <h5 class="powered-by">Powered by</h5>
+      <a href="http://angular.io/" target="_blank">
+        <img [defaultImage]="angularImg" [lazyLoad]="angularImg" class="angular-img">
+      </a>
+    </div>
+
+    <div class="scroll-btn-container">
+      <img [defaultImage]="pokeballImg" [lazyLoad]="pokeballImg" width="30px" class="scroll-btn"
+        (click)="scrollTo('about')">
+    </div>
+
+  </div>
+</div>

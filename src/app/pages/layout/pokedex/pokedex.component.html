@@ -1,28 +1,23 @@
-<section class="home-full-height-container" id="home-full-height-container">
-  <div class="home-full-height-bg" id="home-full-height-bg"></div>
+<section id="landing">
+  <app-landing></app-landing>
+</section>
 
-  <div class="logo-container" style="width: 100%; padding: 20px; position: relative;">
-    <img src="../../../../assets/images/Pokemon Title.png" class="pokemon-logo" style="width: 100%;">
-  </div>
+<section id="about">
+  <app-about-article></app-about-article>
+</section>
 
-  <div class="menu-container" style="width: 100%; padding: 20px;">
+<section id="pokemons">
+  <app-navigation-box [boxInfo]="boxes.pokemons"></app-navigation-box>
+</section>
 
-    <button mat-raised-button color="accent" class="menu-button" [routerLink]="['/pokemon-list']"
-      routerLinkActive="router-link-active" style="width: 100%; margin-bottom: 20px;">Pokémons
-    </button>
+<section id="evolutions">
+  <app-navigation-box [boxInfo]="boxes.evolutions"></app-navigation-box>
+</section>
 
-    <button mat-raised-button color="accent" class="menu-button" [routerLink]="['/evolutions']"
-      routerLinkActive="router-link-active" style="width: 100%; margin-bottom: 20px;">Evolutions
-    </button>
+<section id="types">
+  <app-navigation-box [boxInfo]="boxes.types"></app-navigation-box>
+</section>
 
-    <button mat-raised-button color="accent" class="menu-button" [routerLink]="['/types']"
-      routerLinkActive="router-link-active" style="width: 100%; margin-bottom: 20px;">Types
-    </button>
-
-    <button mat-raised-button color="accent" class="menu-button" [routerLink]="['/regions']"
-      routerLinkActive="router-link-active" style="width: 100%; margin-bottom: 20px;">Regions
-    </button>
-
-  </div>
-
+<section id="regions">
+  <app-navigation-box [boxInfo]="boxes.regions"></app-navigation-box>
 </section>

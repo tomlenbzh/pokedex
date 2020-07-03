@@ -22,6 +22,9 @@ import { PokemonErrorCardComponent } from './pokemon-error-card/pokemon-error-ca
 import { TypeDetailHeaderComponent } from './type-detail-header/type-detail-header.component';
 import { TypeDetailCardComponent } from './type-detail-card/type-detail-card.component';
 import { RegionCardComponent } from './region-card/region-card.component';
+import { AboutArticleComponent } from './about-article/about-article.component';
+import { LandingComponent } from './landing/landing.component';
+import { NavigationBoxComponent } from './navigation-box/navigation-box.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { RegionCardComponent } from './region-card/region-card.component';
     TypeDetailHeaderComponent,
     TypeDetailCardComponent,
     RegionCardComponent,
+    AboutArticleComponent,
+    LandingComponent,
+    NavigationBoxComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +68,10 @@ import { RegionCardComponent } from './region-card/region-card.component';
     PokemonErrorCardComponent,
     TypeDetailHeaderComponent,
     TypeDetailCardComponent,
-    RegionCardComponent
+    RegionCardComponent,
+    AboutArticleComponent,
+    LandingComponent,
+    NavigationBoxComponent
   ],
   exports: [
     PokemonListCardComponent,
@@ -77,7 +86,10 @@ import { RegionCardComponent } from './region-card/region-card.component';
     PokemonErrorCardComponent,
     TypeDetailHeaderComponent,
     TypeDetailCardComponent,
-    RegionCardComponent
+    RegionCardComponent,
+    AboutArticleComponent,
+    LandingComponent,
+    NavigationBoxComponent
   ]
 })
 export class SharedModule { }
