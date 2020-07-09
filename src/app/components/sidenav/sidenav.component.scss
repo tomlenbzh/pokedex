@@ -1,0 +1,54 @@
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #393b42;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #393b42;
+}
+
+.sidenav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 25;
+  width: 300px;
+  background: #171b21;
+  overflow: auto;
+}
+
+.sidenav-logo {
+  width: 100px;
+  margin: 30px calc(50% - 50px);
+}
+
+.open {
+  left: 0px;
+  transition: all linear 0.3s;
+}
+
+.close {
+  left: -300px;
+}
+
+.sidenav-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 24;
+}

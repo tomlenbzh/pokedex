@@ -14,8 +14,9 @@
     </div>
 
     <div class="scroll-btn-container">
-      <img [defaultImage]="pokeballImg" [lazyLoad]="pokeballImg" width="30px" class="scroll-btn"
-        (click)="scrollTo('about')">
+      <button mat-mini-fab class="scroll-btn animated flipInY delay-2s" width="30px" (click)="scrollTo('about')">
+        <mat-icon>expand_more</mat-icon>
+      </button>
     </div>
 
   </div>

@@ -13,7 +13,12 @@ import { ToggleRegion, RotateIcon } from '../../animations/regions.animation';
 export class RegionCardComponent implements OnInit {
 
   @Input() regionInfo: any;
+  regionName: string;
+  regionGeneration: string;
+  regionLocationsNumber: string;
+  regionMap: string;
   showRegionInfo: boolean;
+  versionsNamesList: any[] = [];
   versionList: any[] = [];
 
   constructor() {
@@ -22,20 +27,34 @@ export class RegionCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.processVersions();
+    this.initRegionCard();
+  }
+
+  public processVersions(): any {
+    this.versionsNamesList = this.regionInfo.version_groups.map((x: any) => {
+      return this.processVersionsNames(x.name);
+    }).flat();
+  }
+
+  private initRegionCard(): void {
+    this.regionName = this.regionInfo?.name;
+    this.regionGeneration = this.processGeneration(this.regionInfo?.main_generation?.name);
+    this.regionLocationsNumber = this.regionInfo?.locations?.length;
+    this.versionList = this.versionsNamesList.map((x: any) => {
+      return {
+        name: this.processVersionsNames(x),
+        capital_name: this.capitalizeVersion(x),
+        cover: this.getVersionCover(x)
+      };
+    });
+    this.regionMap = this.getRegionMap(this.regionInfo?.name);
   }
 
   public toggleRegionInfo(): void {
     this.showRegionInfo = !this.showRegionInfo;
   }
 
-  public processVersions(): any {
-    this.versionList = this.regionInfo.version_groups.map((x: any) => {
-      return this.processVersionsNames(x.name);
-    }).flat();
-    console.log('NAME', this.versionList);
-  }
-
-  public processGeneration(name: string): string {
+  private processGeneration(name: string): string {
     return name.replace('-', ' ');
   }
 
@@ -64,3 +83,4 @@ export class RegionCardComponent implements OnInit {
     return version.toUpperCase().replace('-', ' ');
   }
 }
+

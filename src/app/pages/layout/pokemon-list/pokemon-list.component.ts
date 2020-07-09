@@ -1,13 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 
 import { PokedexService } from '../../../services/pokedex.service';
 import { PokemonType } from '../../../models/types.model';
 import { typeList } from '../../../data/types.data';
-import { Title } from '@angular/platform-browser';
-
-import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
-
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -20,82 +22,143 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   loadingMessage = 'Loading...';
   isLoading: boolean;
   pokemonsList: any[] = [];
-  apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1000&offset=0';
   typesList: PokemonType[] = typeList;
-  searchPokemon: any;
-  filterPokemon = 1;
+
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
 
   /* ++++++++++ */
 
   totalRecords: number;
   currentPage: number;
+  pagesNumber: number;
+  pokemonsPerPage: number;
+  lastPokemon: number;
+  hasNext: boolean;
+  firstRequest: boolean;
+  searchList: any;
 
   constructor(
     private pokedexService: PokedexService,
-    private scrollToService: ScrollToService,
     private titleService: Title,
     private router: Router,
   ) {
     this.titleService.setTitle('Pokémons');
     this.pageTitle = 'Pokémons';
-    this.currentPage = 1;
+    this.currentPage = this.pokedexService.currentPage;
+    this.pokemonsPerPage = 50;
+    this.lastPokemon = 0;
+    this.totalRecords = 807;
+
   }
 
   ngOnInit(): void {
 
+    this.searchList = this.pokedexService.getStorageSearchInfo();
+    console.log('searchList', this.searchList);
     this.isLoading = true;
-    this.checkPokemonsInStorage() === true
-      ? (console.log('HAS STORAGE'), this.getPokemonsFromStorage())
-      : (console.log('NO STORAGE'), this.initPokemonList());
+
+    // this.checkPokemonsInStorage() === true
+    //   ? (console.log('HAS STORAGE'), this.getPokemonsFromStorage())
+    //   : (console.log('NO STORAGE'), this.initPokemonList());
+
+    // this.initPokemonList();
+
+    this.firstRequest = true;
+    this.initPokemons(this.currentPage)
+      .then(() => {
+        this.isLoading = false;
+      }).catch((error) => {
+        console.log('[ERROR]:', error);
+        this.isLoading = false;
+      });
+
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this.filterOptions(value))
+      );
   }
 
   ngOnDestroy(): void { }
 
-  private checkPokemonsInStorage(): boolean {
-    return localStorage.getItem('pokemonslist') !== null ? true : false;
+  private buildApiUrl(limit: number, offset: number): string {
+    return `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
   }
 
-  private getPokemonsFromStorage(): void {
-    const pokemonsList = JSON.parse(localStorage.getItem('pokemonslist'));
-    this.pokemonsList = pokemonsList;
-    this.totalRecords = pokemonsList.length;
-    this.isLoading = false;
+  private getOffset(newPage: number): number {
+    return (newPage - 1) * this.pokemonsPerPage;
   }
 
-  private initPokemonList(): void {
-    this.loadingMessage = 'Pokédex Initialisation';
-    this.getAllPokemonsNames()
-      .then((rawData) => {
-        this.getAllPokemonsInfo(rawData)
-          .then((pokemonslist: any) => {
-            const filterdPokemons = pokemonslist.filter((x: any) => x.info.id <= 807);
-            localStorage.setItem('pokemonslist', JSON.stringify(filterdPokemons));
-            this.pokemonsList = filterdPokemons;
-            this.totalRecords = filterdPokemons.length;
-            this.isLoading = false;
-          })
-          .catch((error) => {
-            console.log('Error', error);
-            this.isLoading = false;
-          });
-      })
-      .catch((error) => {
-        console.log('Error', error);
+  private initPokemons(page: number): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.getRawPokemonList(page)
+        .then((rawData) => {
+          this.getAllPokemonsInfo(rawData)
+            .then((pokemonslist: any) => {
+              this.pokemonsList = pokemonslist;
+              this.firstRequest = false;
+              resolve(pokemonslist);
+            })
+            .catch((error) => {
+              console.log('Error', error);
+              reject(error);
+            });
+        }).catch((error) => {
+          console.log('[ERROR]:', error);
+        });
+    });
+  }
+
+  public changePage($event: any) {
+
+    this.pokedexService.currentPage = $event;
+    this.currentPage = this.pokedexService.currentPage;
+    this.isLoading = true;
+    window.scroll(0, 0);
+
+    this.initPokemons(this.currentPage)
+      .then(() => {
+        this.isLoading = false;
+      }).catch((error) => {
+        console.log('[ERROR]:', error);
         this.isLoading = false;
       });
   }
 
-  // Retrieves the names of all the Pokémons
-  private getAllPokemonsNames(): Promise<any> {
+  private getRemainingPokemons(offset: number): number {
+    return this.totalRecords - offset;
+  }
+
+  private getRawPokemonList(currentPage: number): Promise<any> {
+
     return new Promise((resolve, reject) => {
-      this.pokedexService.fetchAllPokemons(this.apiUrl)
+      const newOffset = this.getOffset(currentPage);
+      const newApiUrl = currentPage !== 17
+        ? this.buildApiUrl(this.pokemonsPerPage, newOffset)
+        : this.buildApiUrl(this.getRemainingPokemons(newOffset), newOffset);
+
+      this.pokedexService.fetchPokemonRange(newApiUrl)
         .subscribe((rawData) => {
           resolve(rawData);
         }, (error) => {
-          console.log('[ERROR]: [getAllRawPokemons]', error);
           reject(error);
         });
     });
+  }
+
+  private filterOptions(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.searchList.filter((option: any) => option.name.toLowerCase().includes(filterValue));
+  }
+
+  public submitFilter(filterdValue: any): void {
+    const filterExist = this.searchList.filter((option: any) => option.name.toLowerCase() === filterdValue);
+    filterExist.length > 0
+      ? this.seeDetails(filterExist[0]?.name)
+      : console.log('NO MATCH');
   }
 
   // Loops through the Pokémons' names and gathers precise information
@@ -137,22 +200,14 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     };
   }
 
-  public seeDetails(pokemon: any): void {
-    this.pokedexService.selectedPokemon = pokemon;
+  public seeDetails(pokemonId: any): void {
+    this.pokedexService.selectedPokemon = pokemonId;
     setTimeout(() => {
-      this.router.navigateByUrl(`pokemon-details/${pokemon.info.id}`);
+      this.router.navigateByUrl(`pokemon-details/${pokemonId}`);
     }, 300);
   }
 
   public processType(pokemon: any): any {
     return this.typesList.filter(x => x.type.toLowerCase() === pokemon.types[0].type.name);
-  }
-
-  public changePage($event: any) {
-    const config: ScrollToConfigOptions = { target: 'header' };
-    this.currentPage = $event;
-    setTimeout(() => {
-      this.scrollToService.scrollTo(config);
-    }, 1000);
   }
 }

@@ -25,6 +25,9 @@ import { RegionCardComponent } from './region-card/region-card.component';
 import { AboutArticleComponent } from './about-article/about-article.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavigationBoxComponent } from './navigation-box/navigation-box.component';
+import { HeaderComponent } from './header/header.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { MenuListItemComponent } from './menu-list-item/menu-list-item.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { NavigationBoxComponent } from './navigation-box/navigation-box.componen
     AboutArticleComponent,
     LandingComponent,
     NavigationBoxComponent,
+    HeaderComponent,
+    SidenavComponent,
+    MenuListItemComponent,
   ],
   imports: [
     CommonModule,
@@ -71,7 +77,10 @@ import { NavigationBoxComponent } from './navigation-box/navigation-box.componen
     RegionCardComponent,
     AboutArticleComponent,
     LandingComponent,
-    NavigationBoxComponent
+    NavigationBoxComponent,
+    HeaderComponent,
+    SidenavComponent,
+    MenuListItemComponent
   ],
   exports: [
     PokemonListCardComponent,
@@ -89,7 +98,10 @@ import { NavigationBoxComponent } from './navigation-box/navigation-box.componen
     RegionCardComponent,
     AboutArticleComponent,
     LandingComponent,
-    NavigationBoxComponent
+    NavigationBoxComponent,
+    HeaderComponent,
+    SidenavComponent,
+    MenuListItemComponent
   ]
 })
 export class SharedModule { }

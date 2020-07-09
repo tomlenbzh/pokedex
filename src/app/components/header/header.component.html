@@ -1,0 +1,40 @@
+<header>
+  <mat-toolbar class="app-header" [ngClass]="isOnTop === true ? 'header-transparent' : 'header-black'">
+
+    <!-- ++++++++++ POKEDEX LOGO ++++++++++ -->
+    <span class="app-logo-container">
+      <img class="app-logo animated slideInLeft" [lazyLoad]="headerLogo" [defaultImage]="headerLogo"
+        [routerLink]="['/pokedex']" routerLinkActive="router-link-active" />
+    </span>
+
+    <div class="app-header-content-full">
+
+      <button mat-button class="app-header-btn" [routerLink]="['/pokedex']" routerLinkActive="router-link-active">
+        Home
+      </button>
+
+      <button mat-button class="app-header-btn" [routerLink]="['/pokemon-list']" routerLinkActive="router-link-active">
+        Pokémons
+      </button>
+
+      <button mat-button class="app-header-btn" [routerLink]="['/evolutions']" routerLinkActive="router-link-active">
+        Evolutions
+      </button>
+
+      <button mat-button class="app-header-btn" [routerLink]="['/types']" routerLinkActive="router-link-active">
+        Types
+      </button>
+
+      <button mat-button class="app-header-btn" [routerLink]="['/regions']" routerLinkActive="router-link-active">
+        Regions
+      </button>
+    </div>
+
+    <!-- ++++++++++ SIDENAV TOGGLE BUTTON ++++++++++ -->
+    <div class="app-header-content-small">
+      <button mat-icon-button class="mr-10 animate__animated animate__rotateIn" (click)="toggleSidenav()">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</header>

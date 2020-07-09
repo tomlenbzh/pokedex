@@ -6,35 +6,34 @@
     <div class="stats">
 
       <!-- POKEMON NAME -->
-      <h1 class="pokemon-name">{{ pokemonDetails?.name }}</h1>
+      <h1 class="pokemon-name">{{ pokemonName }}</h1>
 
       <div class="details-items-grid">
 
         <!-- POKEMON HEIGHT -->
         <div class="details-item">
           <div class="header-label">Height :</div>
-          <div class="header-value">{{ processHeight(pokemonDetails?.height) }} m</div>
+          <div class="header-value">{{ pokemonHeight }} m</div>
         </div>
 
         <!-- POKEMON WEIGHT -->
         <div class="details-item">
           <div class="header-label">Weight :</div>
-          <div class="header-value">{{ processWeight(pokemonDetails?.weight) }} Kg</div>
+          <div class="header-value">{{ pokemonWeight }} Kg</div>
         </div>
 
         <!-- POKEMON BASE XP -->
         <div class="details-item">
           <div class="header-label">Base Exp :</div>
-          <div class="header-value">{{ pokemonDetails?.baseExperience }} pts</div>
+          <div class="header-value">{{ baseExperience }} pts</div>
         </div>
 
         <!-- POKEMON TYPES -->
         <div class="details-item item-types">
           <div class="header-label">Type(s) :</div>
           <div class="types-container">
-            <div class="type" *ngFor="let typeObject of pokemonDetails?.types"
-              (click)="goToTypeDetails(typeObject.type)">
-              <img [defaultImage]="getTypeIcon(typeObject.type.name)" [lazyLoad]="getTypeIcon(typeObject.type.name)"
+            <div class="type" *ngFor="let typeObject of pokemontypes" (click)="goToTypeDetails(typeObject.name)">
+              <img [defaultImage]="typeObject.img" [lazyLoad]="typeObject.img"
                 class="type-img animate__animated animate__fadeIn">
             </div>
           </div>
@@ -51,8 +50,8 @@
   </div>
 
   <!-- POKEMON BACKGROUND GIF -->
-  <div *ngIf="hasGif(pokemonDetails?.colour.type)">
-    <img [defaultImage]="getGif(pokemonDetails?.colour.type)" [lazyLoad]="getGif(pokemonDetails?.colour.type)"
-      class="animate__animated animate__fadeIn" [class]="selectedGif.class">
+  <div *ngIf="hasGif">
+    <img [defaultImage]="pokemonGif" [lazyLoad]="pokemonGif" class="animate__animated animate__fadeIn"
+      [class]="selectedGifClass.class">
   </div>
 </mat-card>

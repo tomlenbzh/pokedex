@@ -11,19 +11,32 @@ export class PokemonListCardComponent implements OnInit {
   @Input() pokemon: any;
   hasGender: boolean;
   gender = '';
+  pokemonName: string;
+  pokemonId: string;
+  pokemontypes: any[] = [];
 
   constructor() {
     this.hasGender = false;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.initPokemonCard();
+  }
 
-  public processId(id: number): string {
+  private initPokemonCard(): void {
+    this.pokemonName = this.pokemon?.info?.name;
+    this.pokemonId = this.processId(this.pokemon?.info?.id);
+    this.pokemontypes = this.pokemon?.info?.types.map((x: any) => {
+      return { name: x.type.name, img: this.getTypeIcon(x?.type?.name) };
+    });
+  }
+
+  private processId(id: number): string {
     const idString = id.toString();
     return idString.length < 3 ? `#` + '0'.repeat(3 - idString.length) + `${idString}` : `#` + `${idString}`;
   }
 
-  public processName(name: string): string {
+  private processName(name: string): string {
     const splitName = name.split('-');
     if (splitName.length > 1) {
       this.hasGender = true;
@@ -32,7 +45,7 @@ export class PokemonListCardComponent implements OnInit {
     return name.split('-')[0];
   }
 
-  public getTypeIcon(type: string): string {
+  private getTypeIcon(type: string): string {
     return `assets/images/types/${type}.png`;
   }
 }

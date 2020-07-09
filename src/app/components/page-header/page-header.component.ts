@@ -11,7 +11,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() title: string;
   homeImg = '../../../assets/images/Pokeball-Home.png';
   mewImg = '../../../assets/images/MewLoader.png';
-  bgImg = '../../../assets/images/Wallpapers/Stars.jpg';
+  bgImg = `https://wallpoper.com/images/00/28/18/37/abstract-black_00281837.jpg`;
 
   constructor(private router: Router) { }
 

@@ -2,6 +2,7 @@
   height: 100px;
   overflow-y: scroll;
 }
+
 .search-results {
   height: 100%;
 }
@@ -20,10 +21,6 @@ mat-form-field {
   width: 100%;
 }
 
-.search-input {
-  margin-bottom: 20px;
-}
-
 .loader-container {
   position: fixed;
   top: 35vh;
@@ -31,12 +28,56 @@ mat-form-field {
   left: 0;
   right: 0;
   padding: 25px;
+  z-index: 2;
   text-align: center;
+}
+
+.search-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.option-title {
+  margin: 0;
+  width: 100%;
+}
+
+.option-img {
+  width: 30px;
 }
 
 .paging-controls {
   padding: 100px 0 50px;
   text-align: center;
+  width: 100%;
+}
+
+.filter-pokemon-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.submit-button {
+  margin-left: 10px;
+  background-color: #0b1829;
+  color: white;
+}
+
+.filter-option {
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  width: 100%;
+}
+
+.search-input {
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
@@ -45,4 +86,15 @@ mat-form-field {
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
   color: #10182b !important;
+}
+
+::ng-deep .mat-form-field {
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
 }

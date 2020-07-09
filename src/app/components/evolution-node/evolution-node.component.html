@@ -1,6 +1,6 @@
 <div class="evolution-node">
 
-  <h5 class="pokemon-id">{{ processId(pokemon?.species_id) }}</h5>
+  <h5 class="pokemon-id">{{ pokemonId }}</h5>
 
   <div class="wrapper mt-10">
     <div class="pokemon-image-container">
@@ -10,9 +10,9 @@
     </div>
 
     <div class="pokemon-info-container">
-      <h2 class="pokemon-name">{{ processName(pokemon?.species_name) }}</h2>
+      <h2 class="pokemon-name">{{ pokemonName }}</h2>
 
-      <div class="pokemon-info" *ngIf="!isFirstPokemon(pokemon)">
+      <div class="pokemon-info" *ngIf="!firstPokemon">
 
         <div *ngIf="pokemon.trigger_name === null">
           <div class="info-item">
@@ -48,7 +48,7 @@
 
           <div class="info-item">
             <h5 class="info-label">Item:</h5>
-            <h5 class="info-value">{{ processItemName(pokemon?.item.name)  }}</h5>
+            <h5 class="info-value">{{ evolItem }}</h5>
             <img [defaultImage]="pokemon?.item.sprites.default" [lazyLoad]="pokemon?.item.sprites.default"
               class="item-sprite">
           </div>

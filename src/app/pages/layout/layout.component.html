@@ -1,4 +1,9 @@
 <!-- ++++++++++ LAYOUT CONTAINER ++++++++++ -->
+
+<app-sidenav></app-sidenav>
+
+<app-header [isOnTop]="isOnTop" (emitter)="closeNav($event)" #header></app-header>
+
 <div id="routerContainer" #routerContainer>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>

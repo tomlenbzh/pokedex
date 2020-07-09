@@ -9,11 +9,32 @@ import { Router } from '@angular/router';
 export class TypeDetailCardComponent implements OnInit {
 
   @Input() typeInfo: any;
+  typesList = {
+    doubleDamageFrom: [],
+    halfDamageFrom: [],
+    doubleDamageTo: [],
+    halfDamageTo: [],
+  };
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log('typeInfo:', this.typeInfo);
+    this.initTypeCard();
+  }
+
+  private initTypeCard(): void {
+    this.typesList.doubleDamageFrom = this.typeInfo.damage_relations.double_damage_from.map((x: any) => {
+      return { name: x?.name, img: this.getTypeIcon(x?.name) };
+    });
+    this.typesList.halfDamageFrom = this.typeInfo.damage_relations.half_damage_from.map((x: any) => {
+      return { name: x?.name, img: this.getTypeIcon(x?.name) };
+    });
+    this.typesList.doubleDamageTo = this.typeInfo.damage_relations.double_damage_to.map((x: any) => {
+      return { name: x?.name, img: this.getTypeIcon(x?.name) };
+    });
+    this.typesList.halfDamageTo = this.typeInfo.damage_relations.half_damage_to.map((x: any) => {
+      return { name: x?.name, img: this.getTypeIcon(x?.name) };
+    });
   }
 
   public getTypeIcon(type: string): string {

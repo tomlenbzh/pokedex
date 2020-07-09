@@ -31,7 +31,6 @@ export class TypesComponent implements OnInit {
     this.getAllTypes()
       .then((allTypes: any) => {
         this.typesList = allTypes.results;
-        console.log('allTypes', this.typesList);
         this.isLoading = false;
       }).catch((error) => {
         console.log('[ERROR] [getAllTypes]', error);
@@ -55,7 +54,6 @@ export class TypesComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.typeService.getType(type.url)
         .subscribe((typeInfo: any) => {
-          console.log('typeInfo:', typeInfo);
           resolve(typeInfo);
         }, (error) => {
           reject(error);

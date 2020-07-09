@@ -1,19 +1,18 @@
 <!-- TYPE DETAILS HEADER -->
-<mat-card class="type-details-header mt-50 animate__animated animate__fadeIn" [class]="processType(typeInfo)[0].class">
+<mat-card class="type-details-header mt-50 animate__animated animate__fadeIn" [class]="typeClass">
 
   <div class="type-header-content">
     <div class="type-header-txt">
       <!-- TYPE NAME -->
-      <h1 class="type-header-title">{{ typeInfo.name }}</h1>
+      <h1 class="type-header-title">{{ typeName }}</h1>
       <!-- TYPE FIRST APPEARANCE -->
       <div class="detail-item">
         <div class="item-label">First appearance:</div>
-        <div class="item-value">{{ processName(typeInfo.generation.name) }}</div>
+        <div class="item-value">{{ typeGeneration }}</div>
       </div>
     </div>
     <!-- TYPE IMAGE -->
-    <img [defaultImage]="getTypeIcon(typeInfo.name)" [lazyLoad]="getTypeIcon(typeInfo.name)"
-      class="type-header-img animate__animated animate__fadeIn">
+    <img [defaultImage]="typeIcon" [lazyLoad]="typeIcon" class="type-header-img animate__animated animate__fadeIn">
   </div>
 
 </mat-card>

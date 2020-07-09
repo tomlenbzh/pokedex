@@ -58,7 +58,6 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokemonId = this.activatedRoute.snapshot.params.id;
     this.pokemonError = false;
     this.titleService.setTitle('Evolutions');
-    this.pokemonDetails.img = `https://pokeres.bastionbot.org/images/pokemon/${this.pokemonId}.png`;
   }
 
   ngOnInit(): void {
@@ -105,18 +104,16 @@ export class PokemonDetailsComponent implements OnInit {
         this.pokemonDetails.types = pokemonData.types;
         this.pokemonDetails.sprites = pokemonData.sprites;
         this.pokemonDetails.name = pokemonData.name;
+        this.pokemonDetails.img = `https://pokeres.bastionbot.org/images/pokemon/${pokemonData.id}.png`;
 
         this.getPokemonAbilities(pokemonData)
           .then(() => {
 
             this.getPokemonMoves(pokemonData)
               .then(() => {
-
                 this.pokemonDetails.stats = pokemonData.stats;
-                console.log('this.pokemonDetails:', this.pokemonDetails);
                 this.pokemonDetails.colour = this.processType(this.pokemonDetails);
                 this.isLoading = false;
-
                 setTimeout(() => {
                   this.showHeader = true;
                   setTimeout(() => {
@@ -155,10 +152,7 @@ export class PokemonDetailsComponent implements OnInit {
       const moves = [];
       const promises: Promise<any>[] = [];
 
-      console.log('pokemonData', pokemonData);
-
       pokemonData.moves.forEach((element: any) => {
-
         const subPromise = new Promise((resolveSub, rejectSub) => {
           this.pokedexService.fetchPokemonAbility(element.move.url).subscribe((res) => {
             const move = { name: element.move.name, detail: res };
@@ -182,14 +176,9 @@ export class PokemonDetailsComponent implements OnInit {
   getPokemonAbilities(pokemonData: any): Promise<any> {
 
     return new Promise((resolve, reject) => {
-
-      console.log('pokemonData', pokemonData);
-
       const abilities = [];
       const promises: Promise<any>[] = [];
-
       pokemonData.abilities.forEach((element: any) => {
-
         const subPromise = new Promise((resolveSub, rejectSub) => {
           this.pokedexService.fetchPokemonAbility(element.ability.url).subscribe((res) => {
             const ability = { name: element.ability.name, detail: res };

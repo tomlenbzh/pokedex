@@ -1,0 +1,14 @@
+<!-- ++++++++++ SIDENAV ++++++++++ -->
+
+<div class="sidenav" [ngClass]="isSidenavOpen ? 'open' : 'close'">
+  <!-- ++++++++++ SIDENAV LOGO ++++++++++ -->
+  <img [defaultImage]="sidenavLogo" [lazyLoad]="sidenavLogo" class="sidenav-logo" />
+
+  <!-- ++++++++++ SIDENAV ELEMNTS ++++++++++ -->
+  <mat-nav-list>
+    <app-menu-list-item *ngFor="let item of navItems;" [navItem]="item"></app-menu-list-item>
+  </mat-nav-list>
+</div>
+
+<!-- ++++++++++ SIDENAV OVERLAy ++++++++++ -->
+<div *ngIf="isSidenavOpen" class="sidenav-overlay" id="overlay" #overlay (click)="toggleSidenav(false)"></div>

@@ -1,0 +1,91 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 100%;
+}
+
+mat-list-item {
+  padding: 8px 0;
+  display: flex;
+  width: 100%;
+
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: 100;
+  text-transform: uppercase;
+
+  color: #d1d1d1 !important;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  .routeIcon {
+    margin-right: 40px;
+    height: 24px;
+    width: 24px;
+  }
+
+  .routeFlag {
+    margin-left: auto;
+    height: 15px;
+    width: 24px;
+  }
+
+  .currentFlag {
+    margin-left: 10px;
+    height: 15px;
+    width: 24px;
+  }
+}
+
+.mat-list-item:hover {
+  background: #262c34 !important;
+  color: white !important;
+  padding-left: 5px;
+}
+
+.expand-icon {
+  position: absolute;
+  right: 10px;
+}
+
+.children-list {
+  background: #0e1117 !important;
+  overflow: hidden;
+  max-height: 0;
+
+  .menu-list-item {
+    color: #d1d1d1 !important;
+  }
+
+  .menu-list-item:hover {
+    background: #262c34 !important;
+    color: white !important;
+  }
+}
+
+.list-expand {
+  max-height: 100vh;
+  -webkit-transition: max-height ease-in 1s;
+  -moz-transition: max-height ease-in 1s;
+  -ms-transition: max-height ease-in 1s;
+  -o-transition: max-height ease-in 1s;
+  transition: max-height ease-in 1s;
+}
+
+.list-close {
+  max-height: 0;
+  transition: all 0s;
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+}
+
+.active {
+  border-bottom: 1px solid grey;
+}

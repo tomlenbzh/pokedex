@@ -59,7 +59,6 @@ export class RegionsComponent implements OnInit {
         this.getAllRegionsInfo(result)
           .then((pokemonslist: any) => {
             this.regionsList = pokemonslist;
-            console.log('this.regionsList', this.regionsList);
             this.isLoading = false;
             this.showRegions = true;
           })

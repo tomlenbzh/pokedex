@@ -1,24 +1,23 @@
 <!-- POKEMON MOVES LIST -->
-<div class="moves-list">
+<div class="moves-list" *ngIf="!isLoading">
   <h1 class="move-title">Moves ({{ movesList.length }})</h1>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let move of movesList">
+    <mat-expansion-panel *ngFor="let move of editedMovesList">
 
       <!-- POKEMON MOVE NAME + TYPE -->
       <mat-expansion-panel-header>
-        <mat-panel-title class="move-name">{{ move.name }}</mat-panel-title>
+        <mat-panel-title class="move-name">{{ move.data.name }}</mat-panel-title>
         <span class="move-type">
-          <img [src]="getTypeIcon(move.detail.type.name)" class="type-img">
+          <img [src]="move.img" class="type-img">
         </span>
       </mat-expansion-panel-header>
 
       <!-- MOVE EFFECTS -->
-      <div class="effects" *ngFor="let entry of move.detail.effect_entries">
+      <div class="effects" *ngFor="let entry of move.data.detail.effect_entries">
 
         <!-- MOVE TYPE -->
         <div class="type mb-20">
-          <img [src]="getTypeIcon(move.detail.type.name)" class="type-img clickable"
-            (click)="goToTypeDetails(move.detail.type)">
+          <img [src]="move.img" class="type-img clickable" (click)="goToTypeDetails(move.data.detail.type)">
         </div>
 
         <div *ngIf="entry.language.name === 'en'" class="move-effect">
@@ -27,13 +26,13 @@
               <!-- MOVE ACCURACY -->
               <div class="details-item">
                 <div class="move-label skill-label">Accuracy:</div>
-                <div class="move-value">{{ move.detail.accuracy }}</div>
+                <div class="move-value">{{ move.data.detail.accuracy }}</div>
               </div>
 
               <!-- MOVE POWER -->
               <div class="details-item">
                 <div class="move-label skill-label">Power:</div>
-                <div class="move-value">{{ move.detail.power }}</div>
+                <div class="move-value">{{ move.data.detail.power }}</div>
               </div>
             </div>
 
@@ -41,13 +40,13 @@
               <!-- MOVE PP -->
               <div class="details-item">
                 <div class="move-label skill-label">PP:</div>
-                <div class="move-value">{{ move.detail.pp }}</div>
+                <div class="move-value">{{ move.data.detail.pp }}</div>
               </div>
 
               <!-- MOVE PRIORITY -->
               <div class="details-item">
                 <div class="move-label skill-label">Priority:</div>
-                <div class="move-value">{{ move.detail.priority }}</div>
+                <div class="move-value">{{ move.data.detail.priority }}</div>
               </div>
             </div>
           </div>

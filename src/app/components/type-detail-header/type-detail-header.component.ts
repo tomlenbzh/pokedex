@@ -10,21 +10,34 @@ import { typeList } from '../../data/types.data';
 export class TypeDetailHeaderComponent implements OnInit {
 
   @Input() typeInfo: any;
+  typeName: string;
+  typeGeneration: string;
+  typeIcon: string;
+  typeClass: string;
   typesClasses: PokemonType[] = typeList;
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.initTypeHeader();
+  }
 
-  public getTypeIcon(type: string): string {
+  private initTypeHeader(): void {
+    this.typeName = this.typeInfo?.name;
+    this.typeGeneration = this.processName(this.typeInfo?.generation?.name);
+    this.typeIcon = this.getTypeIcon(this.typeInfo?.name);
+    this.typeClass = this.processType(this.typeInfo)[0].class;
+  }
+
+  private getTypeIcon(type: string): string {
     return `assets/images/types/icons/${type}.png`;
   }
 
-  public processType(type: any): any {
+  private processType(type: any): any {
     return this.typesClasses.filter(x => x.class.toLowerCase().includes(type.name));
   }
 
-  public processName(name: string): string {
+  private processName(name: string): string {
     return name.replace('-', ' ');
   }
 }

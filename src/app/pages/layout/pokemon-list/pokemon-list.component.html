@@ -2,31 +2,50 @@
 
 <div class="container mt-10">
 
-  <div *ngIf="!isLoading">
-
-    <div class="row">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <mat-form-field appearance="outline">
-          <mat-label>Search for a Pokémon</mat-label>
-          <input matInput [(ngModel)]="searchPokemon">
-        </mat-form-field>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3"
-        *ngFor="let pokemon of pokemonsList | filterPokemons : searchPokemon | paginate: { id: 'pokemon-pagination', itemsPerPage: 50, currentPage: currentPage, totalItems: totalRecords }">
-        <app-pokemon-list-card [pokemon]="pokemon" (click)="seeDetails(pokemon)"></app-pokemon-list-card>
-      </div>
-    </div>
-
-    <div class="paging-controls">
-      <pagination-controls id="pokemon-pagination" (pageChange)="changePage($event)"></pagination-controls>
-    </div>
-  </div>
-
   <div class="loader-container" *ngIf="isLoading">
     <app-pokemon-loader [message]="loadingMessage"></app-pokemon-loader>
   </div>
+
+  <section id="pokemon-search-bar" *ngIf="!firstRequest">
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-8 col-lg-6">
+        <form class="filter-pokemon-form" (ngSubmit)="submitFilter(myControl.value)">
+          <mat-form-field appearance="outline">
+            <input type="text" class="search-input" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-label>Search a Pokémon</mat-label>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async | slice : 0 : 20" [value]="option.name"
+                class="filter-option">
+                <div class="search-option">
+                  <h5 class="option-title">{{option.name}}</h5>
+                </div>
+              </mat-option>
+              <mat-option class="filter-option" disabled>
+                <h5>Type for more Pokémons...</h5>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button mat-mini-fab class="submit-button">
+            <mat-icon>search</mat-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="paginated-pokemon-list">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+        *ngFor="let pokemon of pokemonsList | paginate: { id: 'pokemon-pagination', itemsPerPage: 50, currentPage: currentPage, totalItems: totalRecords }">
+        <app-pokemon-list-card [pokemon]="pokemon" (click)="seeDetails(pokemon.info.id)"></app-pokemon-list-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="paging-controls" *ngIf="!firstRequest">
+        <pagination-controls id="pokemon-pagination" (pageChange)="changePage($event)"></pagination-controls>
+      </div>
+    </div>
+  </section>
 
 </div>

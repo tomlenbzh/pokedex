@@ -1,12 +1,13 @@
 .page-header {
-  height: 25vh;
+  height: 200px;
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
+  padding-bottom: 45px;
   overflow: hidden;
   transition: all ease-in-out 0.3s;
 }
@@ -21,7 +22,6 @@
   color: white;
   font-size: xx-large;
   margin: 0 !important;
-
   font-family: "Aldrich", sans-serif !important;
   font-weight: bold;
   text-transform: uppercase;
@@ -37,8 +37,7 @@
   height: 50%;
   position: absolute;
   right: 5%;
-  top: 25%;
-  bottom: 0;
+  bottom: 10%;
 }
 
 img:focus {
@@ -58,26 +57,24 @@ img:focus {
 
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 1199px) {
-}
+@media only screen and (max-width: 1199px) {}
 
-@media only screen and (max-width: 991px) {
-}
+@media only screen and (max-width: 991px) {}
 
-@media only screen and (max-width: 767px) {
-}
+@media only screen and (max-width: 767px) {}
 
-@media only screen and (max-width: 575px) {
-}
+@media only screen and (max-width: 575px) {}
 
 @media only screen and (max-width: 500px) {
-  .page-header {
-    height: 15vh;
+
+  .right-img {
+    height: 70px;
+    position: absolute;
+    right: 5%;
+    bottom: 15%;
   }
-  .home-img {
-    height: 25px;
-  }
+
   .header-title {
-    font-size: large;
+    font-size: x-large;
   }
 }

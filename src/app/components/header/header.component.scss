@@ -1,0 +1,230 @@
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-color: transparent;
+  color: white;
+  height: 100px;
+  padding: 0px 20px;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+.header-transparent {
+  height: 100px;
+}
+
+.header-black {
+  background: rgba(23, 27, 33, 0.95);
+  color: white;
+  height: 64px;
+}
+
+.app-logo-container {
+  width: 100px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+}
+
+.app-logo {
+  width: 30px;
+  margin-left: 10%;
+  transition: all ease-in-out 0.2s;
+}
+
+.app-logo:hover {
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.nav-items {
+  display: flex;
+  width: fit-content;
+  flex-direction: row;
+}
+
+.app-header-content-full {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: -ms-available;
+  width: -o-available;
+  width: stretch;
+  width: 100%;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-header-content-small {
+  width: 100%;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: -ms-available;
+  width: -o-available;
+  width: stretch;
+  text-align: right;
+}
+
+.app-header-btn {
+  margin: 0 !important;
+  font-family: "Aldrich", sans-serif !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: 200;
+  letter-spacing: 1px;
+  color: #d1d1d1;
+  -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.5s;
+}
+
+.app-header-btn:hover {
+  color: white;
+}
+
+.app-header-item {
+  display: flex;
+}
+
+.app-children-btn {
+  color: #d1d1d1;
+  background: #1a1e23 !important;
+  font-weight: 200;
+  text-transform: uppercase;
+
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+
+  border: none;
+  border-radius: 0px;
+  padding: 5px 15px;
+  text-align: left;
+}
+
+.app-children-btn:hover {
+  color: white;
+  background: #262c34 !important;
+}
+
+.children {
+  position: absolute;
+  padding-top: 13px;
+  min-width: 170px;
+  max-width: 250px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 0vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.children-left {
+  left: 0;
+}
+
+.children-right {
+  right: 0;
+}
+
+.hasChildren {
+  position: relative;
+}
+
+.hasChildren:hover {
+  .children {
+    max-height: 100vh;
+    -webkit-transition: all ease-in-out 1s;
+    -moz-transition: all ease-in-out 1s;
+    -ms-transition: all ease-in-out 1s;
+    -o-transition: all ease-in-out 1s;
+    transition: all ease-in-out 1s;
+  }
+}
+
+.menu-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu-button-label {
+  display: flex;
+}
+
+.menu-button-icon {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: -ms-available;
+  width: -o-available;
+  width: stretch;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 30px;
+}
+
+.child-flag {
+  width: 25px;
+}
+
+.parent-flag {
+  width: 25px;
+  height: 15px;
+  margin: 0 0 4px 0;
+}
+
+@media (min-width: 870px) {
+  .app-header-content-full {
+    display: flex;
+  }
+
+  .app-header-content-small {
+    display: none;
+  }
+}
+
+@media (max-width: 870px) {
+  .app-header-content-full {
+    display: none;
+  }
+
+  .app-header-content-small {
+    display: block;
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-device-width: 411px) {
+  .app-header-content-small {
+    display: block;
+    margin-right: 0px;
+  }
+
+  .app-logo {
+    height: 90%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (max-device-width: 360px) {
+  .app-header-content-small {
+    display: block;
+  }
+
+  .app-logo {
+    height: 90%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}

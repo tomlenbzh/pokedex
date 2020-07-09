@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PokemonListRoutingModule } from './pokemon-list-routing.module';
 import { PokemonListComponent } from './pokemon-list.component';
@@ -29,6 +29,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxSpinnerModule,
     FormsModule,
     NgxPaginationModule,
+    ReactiveFormsModule
   ]
 })
 export class PokemonListModule { }

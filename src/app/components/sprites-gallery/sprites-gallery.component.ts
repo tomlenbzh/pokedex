@@ -11,7 +11,5 @@ export class SpritesGalleryComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log('SPRITES:', this.spritesList);
-  }
+  ngOnInit(): void { }
 }

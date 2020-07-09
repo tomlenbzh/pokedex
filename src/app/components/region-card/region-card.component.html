@@ -1,7 +1,7 @@
-<mat-card class="region-card mt-30 mb-30">
+<mat-card class="region-card mt-30 mb-30 animate__animated animate__fadeIn">
 
   <div class="region-card-header">
-    <h2 class="region-title">{{ regionInfo.name }}</h2>
+    <h2 class="region-title">{{ regionName }}</h2>
     <button mat-mini-fab color="primary" class="rotateBtn" (click)="toggleRegionInfo()" matTooltip="Show versions">
       <mat-icon [@rotateIcon]=showRegionInfo>arrow_downward</mat-icon>
     </button>
@@ -11,12 +11,12 @@
 
     <div class="detail-item mt-10">
       <div class="item-label generation">Introduced in:</div>
-      <div class="item-value">{{ processGeneration(regionInfo.main_generation.name) }}</div>
+      <div class="item-value">{{ regionGeneration }}</div>
     </div>
 
     <div class="detail-item mt-10">
       <div class="item-label">Locations:</div>
-      <div class="item-value">{{ regionInfo.locations.length }}</div>
+      <div class="item-value">{{ regionLocationsNumber }}</div>
     </div>
 
     <div [@showRegion]=showRegionInfo>
@@ -24,8 +24,7 @@
         <div class="item-label">Versions:</div>
         <div class="item-value versions-list row">
           <div *ngFor="let version of versionList" class="col-4 col-sm-3 col-md-2 col-lg-2 version-group">
-            <img [defaultImage]="getVersionCover(version)" [lazyLoad]="getVersionCover(version)"
-              [matTooltip]="capitalizeVersion(version)"
+            <img [defaultImage]="version.cover" [lazyLoad]="version.cover" [matTooltip]="version.capital_name"
               class="version-cover-img mt-10 animate__animated animate__fadeIn">
           </div>
         </div>
@@ -34,7 +33,7 @@
       <div class="detail-item item-map mt-30">
         <div class="item-label">Map:</div>
         <div class="item-value map-value">
-          <img [defaultImage]="getRegionMap(regionInfo.name)" [lazyLoad]="getRegionMap(regionInfo.name)"
+          <img [defaultImage]="regionMap" [lazyLoad]="regionMap"
             class="region-map mt-10 animate__animated animate__fadeIn">
         </div>
       </div>
