@@ -34,8 +34,9 @@ export class PokemonDetailHeaderComponent implements OnInit {
     this.pokemonWeight = this.processWeight(this.pokemonDetails?.weight);
     this.baseExperience = this.pokemonDetails?.baseExperience;
     this.pokemontypes = this.pokemonDetails?.types.map((x: any) => {
-      return { name: x.name, img: this.getTypeIcon(x?.type?.name) };
+      return { name: x?.type?.name, img: this.getTypeIcon(x?.type?.name) };
     });
+    console.log('this.pokemontypes:', this.pokemontypes);
     this.hasGif = this.checkGif(this.pokemonDetails?.colour?.type);
     if (this.hasGif === true) {
       this.pokemonGif = this.getGif(this.pokemonDetails?.colour?.type);
@@ -69,7 +70,7 @@ export class PokemonDetailHeaderComponent implements OnInit {
     return `assets/images/types/${type}.png`;
   }
 
-  public goToTypeDetails(type: any): void {
-    this.router.navigateByUrl(`/type-details/${type.name}`);
+  public goToTypeDetails(name: any): void {
+    this.router.navigateByUrl(`/type-details/${name}`);
   }
 }

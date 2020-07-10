@@ -29,6 +29,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MenuListItemComponent } from './menu-list-item/menu-list-item.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SidenavComponent,
     MenuListItemComponent,
     NotFoundComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -83,7 +85,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HeaderComponent,
     SidenavComponent,
     MenuListItemComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent
   ],
   exports: [
     PokemonListCardComponent,
@@ -105,7 +108,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HeaderComponent,
     SidenavComponent,
     MenuListItemComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
