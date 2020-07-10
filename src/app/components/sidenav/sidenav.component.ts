@@ -7,6 +7,7 @@ import { NavItem } from '../../models/nav-items.model';
 import { NavItems } from '../../data/nav-items.data';
 
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { PlatformService } from '../../services/platform.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -23,12 +24,21 @@ export class SidenavComponent implements OnInit, OnDestroy {
   public sidenavLogo: string;
   public navItems: NavItem[];
 
-  constructor(private sidenavService: SidenavService, private subscriptionService: SubscriptionService) { }
+  constructor(
+    private sidenavService: SidenavService,
+    private subscriptionService: SubscriptionService,
+    private platformService: PlatformService
+  ) { }
 
   ngOnInit(): void {
     this.navItems = NavItems;
     this.sidenavLogo = `../../../assets/images/sidenav/totodile.png`;
-    this.overlayElement = document.querySelector('#overlay');
+
+    console.log('isPlatformBrowser', this.platformService.isPlatformBrowser());
+
+    if (this.platformService.isPlatformBrowser) {
+      this.overlayElement = document.querySelector('#overlay');
+    }
     this.sidenavSubscription = this.sidenavService.isSidnavOpen.subscribe(isSidenavOpen => {
       this.isSidenavOpen = isSidenavOpen;
       console.log('isSidnavOpen', this.sidenavService.isSidnavOpen.value);

@@ -69,11 +69,8 @@ export class EvolutionsComponent implements OnInit {
   }
 
   public changePage($event: any) {
-    const config: ScrollToConfigOptions = { target: 'header' };
+    window.scroll(0, 0);
     this.currentPage = $event;
-    setTimeout(() => {
-      this.scrollToService.scrollTo(config);
-    }, 1000);
   }
 
   public getAllRawEvolutions(): Promise<any> {
