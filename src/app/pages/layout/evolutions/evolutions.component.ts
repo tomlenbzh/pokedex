@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 
 import { EvolutionService } from '../../../services/evolution.service';
-import { ScrollToConfigOptions, ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
+import { PlatformService } from '../../../services/platform.service';
 
 @Component({
   selector: 'app-evolutions',
@@ -17,11 +16,12 @@ export class EvolutionsComponent implements OnInit {
   isLoading: boolean;
   totalRecords: number;
   currentPage: number;
+  window: Window;
 
   constructor(
     private titleService: Title,
     private evolutionService: EvolutionService,
-    private scrollToService: ScrollToService
+    private platformService: PlatformService
   ) {
     this.titleService.setTitle('Evolutions');
     this.pageTitle = 'Evolutions';
@@ -30,10 +30,13 @@ export class EvolutionsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.isLoading = true;
-    this.checkEvolutionsInStorage() === true
-      ? (console.log('HAS STORAGE'), this.getEvolutionsFromStorage())
-      : (console.log('NO STORAGE'), this.initEvolutionsList());
+    if (this.platformService.isPlatformBrowser()) {
+      this.window = this.platformService.windowRefService.nativeWindow;
+      this.isLoading = true;
+      this.checkEvolutionsInStorage() === true
+        ? (console.log('HAS STORAGE'), this.getEvolutionsFromStorage())
+        : (console.log('NO STORAGE'), this.initEvolutionsList());
+    }
   }
 
   private initEvolutionsList(): void {
@@ -69,7 +72,9 @@ export class EvolutionsComponent implements OnInit {
   }
 
   public changePage($event: any) {
-    window.scroll(0, 0);
+    if (this.platformService.isPlatformBrowser) {
+      this.window.scroll(0, 0);
+    }
     this.currentPage = $event;
   }
 

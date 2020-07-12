@@ -30,12 +30,12 @@ export class TypeDetailsComponent implements OnInit {
     private typesService: TypeService
   ) {
     this.typeError = false;
-    this.titleService.setTitle('Evolutions');
     this.pageTitle = 'Type Details';
     this.loadingMessage = 'Loadingtype...';
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Type Details');
     this.activatedRoute.params.subscribe(params => {
       this.typeId = params.id;
       this.initialiseState();

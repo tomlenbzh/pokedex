@@ -22,11 +22,11 @@ export class TypesComponent implements OnInit {
     private typeService: TypeService,
     private router: Router
   ) {
-    this.titleService.setTitle('Types');
     this.pageTitle = 'Types';
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Types');
     this.isLoading = true;
     this.getAllTypes()
       .then((allTypes: any) => {

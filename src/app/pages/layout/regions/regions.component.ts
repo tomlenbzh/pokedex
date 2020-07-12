@@ -34,12 +34,12 @@ export class RegionsComponent implements OnInit {
     private router: Router,
     private regionsService: RegionsService
   ) {
-    this.titleService.setTitle('Regions');
     this.pageTitle = 'Regions';
     this.loadingMessage = 'Loading regions...';
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Regions');
     this.initialiseState();
   }
 

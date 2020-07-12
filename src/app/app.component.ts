@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { PlatformService } from './services/platform.service';
 
 @Component({
@@ -12,6 +10,6 @@ export class AppComponent {
 
   constructor(private platformService: PlatformService) { }
 
-  title = 'pokedex';
+  title = 'Pokédex';
   checkSSR = this.platformService.isPlatformBrowser();
 }

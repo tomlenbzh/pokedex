@@ -8,19 +8,26 @@ import { PlatformService } from './platform.service';
 })
 export class ScrollService {
 
-  constructor(private platformService: PlatformService, private scrollToService: ScrollToService) { }
+  window: Window;
+
+  constructor(
+    private platformService: PlatformService,
+    private scrollToService: ScrollToService
+  ) {
+    this.window = this.platformService.windowRefService.nativeWindow;
+  }
 
   // Binds an event listener to a type and a function
   public setScrollEventListener(type: string, listener: any, options: boolean): void {
     if (this.platformService.isPlatformBrowser()) {
-      window.addEventListener(type, listener, options);
+      this.window.addEventListener(type, listener, options);
     }
   }
 
   // Removes an existing event listener
   public removeScrollEventListener(type: string, listener: any, options: boolean): void {
     if (this.platformService.isPlatformBrowser()) {
-      window.removeEventListener(type, listener, options);
+      this.window.removeEventListener(type, listener, options);
     }
   }
 

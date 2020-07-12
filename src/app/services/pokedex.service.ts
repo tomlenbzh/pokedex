@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { PlatformService } from './platform.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class PokedexService {
   selectedPokemon: any;
   currentPage: number;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private platformService: PlatformService) {
     this.apiUrl = `https://pokeapi.co/api/v2`;
     this.currentPage = 1;
   }
@@ -52,14 +52,20 @@ export class PokedexService {
   }
 
   public hasStorageSearchInfo(): boolean {
-    return localStorage.getItem('searchInfo') === null ? false : true;
+    if (this.platformService.isPlatformBrowser()) {
+      return localStorage.getItem('searchInfo') === null ? false : true;
+    }
   }
 
   public setStorageSearchInfo(pokemonList: any): void {
-    localStorage.setItem('searchInfo', JSON.stringify(pokemonList));
+    if (this.platformService.isPlatformBrowser()) {
+      localStorage.setItem('searchInfo', JSON.stringify(pokemonList));
+    }
   }
 
   public getStorageSearchInfo(): any {
-    return JSON.parse(localStorage.getItem('searchInfo'));
+    if (this.platformService.isPlatformBrowser()) {
+      return JSON.parse(localStorage.getItem('searchInfo'));
+    }
   }
 }

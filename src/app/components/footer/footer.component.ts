@@ -13,7 +13,6 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void { }
 
   public scrollTo(dest: string): void {
-    console.log('DEST', dest);
     const config: ScrollToConfigOptions = { target: dest };
     this.scrollToService.scrollTo(config);
   }

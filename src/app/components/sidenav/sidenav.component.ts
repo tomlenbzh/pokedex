@@ -23,6 +23,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   public isSidenavOpen: boolean;
   public sidenavLogo: string;
   public navItems: NavItem[];
+  private document: Document;
 
   constructor(
     private sidenavService: SidenavService,
@@ -31,34 +32,37 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.navItems = NavItems;
-    this.sidenavLogo = `../../../assets/images/sidenav/totodile.png`;
-
-    console.log('isPlatformBrowser', this.platformService.isPlatformBrowser());
-
     if (this.platformService.isPlatformBrowser) {
-      this.overlayElement = document.querySelector('#overlay');
+      this.document = this.platformService.windowRefService.nativeWindow.document;
+      this.navItems = NavItems;
+      this.sidenavLogo = `../../../assets/images/sidenav/totodile.png`;
+      this.overlayElement = this.document.querySelector('#overlay');
+      this.sidenavSubscription = this.sidenavService.isSidnavOpen.subscribe(isSidenavOpen => {
+        this.isSidenavOpen = isSidenavOpen;
+        this.lockBody();
+      });
     }
-    this.sidenavSubscription = this.sidenavService.isSidnavOpen.subscribe(isSidenavOpen => {
-      this.isSidenavOpen = isSidenavOpen;
-      console.log('isSidnavOpen', this.sidenavService.isSidnavOpen.value);
-      this.lockBody();
-    });
   }
 
   ngOnDestroy(): void {
-    clearAllBodyScrollLocks();
-    this.subscriptionService.unsubscribeAll(this.subscriptionService.checkSubscriptions([this.sidenavSubscription]));
+    if (this.platformService.isPlatformBrowser) {
+      clearAllBodyScrollLocks();
+      this.subscriptionService.unsubscribeAll(this.subscriptionService.checkSubscriptions([this.sidenavSubscription]));
+    }
   }
 
   /* Blocks scroll on body element */
   private lockBody(): void {
-    this.isSidenavOpen === true ? disableBodyScroll(this.overlayElement) : enableBodyScroll(this.overlayElement),
-      this.sidenavService.sidenavSubject.next(null);
+    if (this.platformService.isPlatformBrowser) {
+      this.isSidenavOpen === true ? disableBodyScroll(this.overlayElement) : enableBodyScroll(this.overlayElement),
+        this.sidenavService.sidenavSubject.next(null);
+    }
   }
 
   /* Opens and closes the sidenav */
   public toggleSidenav(value: boolean): void {
-    this.sidenavService.isSidnavOpen.next(value);
+    if (this.platformService.isPlatformBrowser) {
+      this.sidenavService.isSidnavOpen.next(value);
+    }
   }
 }

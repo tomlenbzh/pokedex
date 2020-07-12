@@ -33,7 +33,7 @@ export class RegionCardComponent implements OnInit {
   public processVersions(): any {
     this.versionsNamesList = this.regionInfo.version_groups.map((x: any) => {
       return this.processVersionsNames(x.name);
-    }).flat();
+    }).reduce((acc, val) => acc.concat(val), []);
   }
 
   private initRegionCard(): void {

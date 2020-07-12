@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   /* Detects sidenav toggle */
   public toggleSidenav(): void {
     this.sidenavService.isSidnavOpen.next(!this.isSidenavOpen);
-    console.log('isSidnavOpen', this.sidenavService.isSidnavOpen.value);
   }
 
 }

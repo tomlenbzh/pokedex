@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokedexService } from '../../../services/pokedex.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pokedex',
@@ -9,7 +10,6 @@ import { PokedexService } from '../../../services/pokedex.service';
 
 export class PokedexComponent implements OnInit {
 
-  height = window.innerHeight * 0.01;
   boxes = {
     pokemons: {
       title: 'Pokémons',
@@ -37,20 +37,25 @@ export class PokedexComponent implements OnInit {
     },
   };
 
-  constructor(private pokedexService: PokedexService) { }
+  constructor(
+    private title: Title,
+    private meta: Meta,
+    private pokedexService: PokedexService
+  ) { }
 
   ngOnInit(): void {
 
-    this.pokedexService.hasStorageSearchInfo()
-      ? (console.log('HAS DATA'))
-      : (
-        console.log('NO DATA'),
-        this.initPokemons().then((pokemonslist) => {
-          this.pokedexService.setStorageSearchInfo(pokemonslist);
-        }).catch((error) => {
-          console.log('[ERROR]:', error);
-        })
-      );
+    this.title.setTitle('Pokédex');
+    this.meta.addTag({ keywords: 'Pokédex, Thomas Lenoel, Angular, Single Page Application' });
+    this.meta.addTag({ description: 'A Pokédex developped with Angular 9 and https://pokeapi.co/' });
+
+    if (!this.pokedexService.hasStorageSearchInfo()) {
+      this.initPokemons().then((pokemonslist) => {
+        this.pokedexService.setStorageSearchInfo(pokemonslist);
+      }).catch((error) => {
+        console.log('[ERROR]:', error);
+      });
+    }
   }
 
   private initPokemons(): Promise<any> {
@@ -60,15 +65,15 @@ export class PokedexComponent implements OnInit {
         .then((rawData) => {
           this.getAllPokemonsInfo(rawData)
             .then((pokemonslist: any) => {
-
               resolve(pokemonslist);
             })
             .catch((error) => {
-              console.log('Error', error);
+              console.log('[Error]', error);
               reject(error);
             });
         }).catch((error) => {
           console.log('[ERROR]:', error);
+          reject(error);
         });
     });
   }

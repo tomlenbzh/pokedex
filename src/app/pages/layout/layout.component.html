@@ -1,6 +1,6 @@
 <!-- ++++++++++ LAYOUT CONTAINER ++++++++++ -->
 
-<app-sidenav></app-sidenav>
+<app-sidenav *ngIf="checkSSR"></app-sidenav>
 
 <app-header [isOnTop]="isOnTop" (emitter)="closeNav($event)" #header></app-header>
 

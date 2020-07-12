@@ -57,10 +57,10 @@ export class PokemonDetailsComponent implements OnInit {
   ) {
     this.pokemonId = this.activatedRoute.snapshot.params.id;
     this.pokemonError = false;
-    this.titleService.setTitle('Evolutions');
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Pokémon Details');
     this.isLoading = true;
     this.showHeader = false;
     this.showAbilities = false;

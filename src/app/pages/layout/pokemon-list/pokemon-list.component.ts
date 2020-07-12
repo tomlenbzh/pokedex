@@ -4,12 +4,11 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
-
 import { PokedexService } from '../../../services/pokedex.service';
 import { PokemonType } from '../../../models/types.model';
 import { typeList } from '../../../data/types.data';
 import { startWith, map } from 'rxjs/operators';
+import { PlatformService } from '../../../services/platform.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -39,46 +38,45 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   firstRequest: boolean;
   searchList: any;
 
+  window: Window;
+
   constructor(
     private pokedexService: PokedexService,
     private titleService: Title,
     private router: Router,
+    private platformService: PlatformService
   ) {
-    this.titleService.setTitle('Pokémons');
-    this.pageTitle = 'Pokémons';
+
     this.currentPage = this.pokedexService.currentPage;
     this.pokemonsPerPage = 50;
     this.lastPokemon = 0;
     this.totalRecords = 807;
-
   }
 
   ngOnInit(): void {
+    this.pageTitle = 'All Pokémons';
+    this.titleService.setTitle(this.pageTitle);
 
-    this.searchList = this.pokedexService.getStorageSearchInfo();
-    console.log('searchList', this.searchList);
-    this.isLoading = true;
+    if (this.platformService.isPlatformBrowser()) {
+      this.window = this.platformService.windowRefService.nativeWindow;
+      this.searchList = this.pokedexService.getStorageSearchInfo();
+      this.isLoading = true;
 
-    // this.checkPokemonsInStorage() === true
-    //   ? (console.log('HAS STORAGE'), this.getPokemonsFromStorage())
-    //   : (console.log('NO STORAGE'), this.initPokemonList());
+      this.firstRequest = true;
+      this.initPokemons(this.currentPage)
+        .then(() => {
+          this.isLoading = false;
+        }).catch((error) => {
+          console.log('[ERROR]:', error);
+          this.isLoading = false;
+        });
 
-    // this.initPokemonList();
-
-    this.firstRequest = true;
-    this.initPokemons(this.currentPage)
-      .then(() => {
-        this.isLoading = false;
-      }).catch((error) => {
-        console.log('[ERROR]:', error);
-        this.isLoading = false;
-      });
-
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this.filterOptions(value))
-      );
+      this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this.filterOptions(value))
+        );
+    }
   }
 
   ngOnDestroy(): void { }
@@ -103,7 +101,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
               resolve(pokemonslist);
             })
             .catch((error) => {
-              console.log('Error', error);
+              console.log('[Error]', error);
               reject(error);
             });
         }).catch((error) => {
@@ -117,7 +115,9 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     this.pokedexService.currentPage = $event;
     this.currentPage = this.pokedexService.currentPage;
     this.isLoading = true;
-    window.scroll(0, 0);
+    if (this.platformService.isPlatformBrowser) {
+      this.window.scroll(0, 0);
+    }
 
     this.initPokemons(this.currentPage)
       .then(() => {
