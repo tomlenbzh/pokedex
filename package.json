@@ -12,7 +12,10 @@
     "serve:ssr": "node dist/pokedex/server/main.js",
     "build:ssr": "ng build --prod && ng run pokedex:server:production",
     "build:all": "npm run build:ssr && npm run serve:ssr",
-    "prerender": "ng run pokedex:prerender"
+    "prerender": "ng run pokedex:prerender",
+    "pm2:start": "pm2 start dist/pokedex/server/main.js --name pokedex",
+    "pm2:reload": "pm2 reload pokedex",
+    "pm2:delete": "pm2 delte pokedex"
   },
   "private": true,
   "dependencies": {
